@@ -54,13 +54,22 @@
         }
 
         .nav-logo {
-            font-size: 1.4rem;
-            font-weight: bold;
-            font-style: italic;
-            color: var(--cream);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: 0.04em;
+            height: 72px;
         }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            /* Wordmark is black, V-mark is blue — invert to render as cream on Ink nav */
+            filter: brightness(0) invert(1);
+            transition: opacity 0.2s;
+        }
+
+        .nav-logo:hover img { opacity: 0.85; }
 
         .nav-links { display: flex; align-items: center; gap: 2.25rem; }
 
@@ -424,7 +433,7 @@
     <!-- NAV -->
     <nav>
         <div class="nav-inner">
-            <a href="index.html" class="nav-logo">ViAGO</a>
+            <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
             <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
