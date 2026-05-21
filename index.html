@@ -44,12 +44,14 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-weight: 700; font-style: italic;
-  font-size: 1.5rem; color: var(--cream);
-  text-decoration: none; letter-spacing: -0.01em;
+  display: flex; align-items: center; text-decoration: none; height: 68px;
 }
-.nav-logo span { color: var(--orange); }
+.nav-logo img {
+  height: 40px; width: auto; display: block;
+  filter: brightness(0) invert(1); opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover img { opacity: 1; }
 .nav-toggle {
   display: none;
   flex-direction: column; gap: 5px;
@@ -434,7 +436,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Vi<span>A</span>GO</a>
+    <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -464,7 +466,7 @@ footer {
         <span>30+ years operations expertise</span>
       </div>
       <div class="ha ha5" style="margin-top:1.5rem;">
-        <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" style="height:32px;width:auto;display:block;">
+        <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" style="height:52px;width:auto;display:block;opacity:0.85;">
       </div>
     </div>
   </div>
@@ -669,7 +671,7 @@ footer {
     <div class="footer-inner" style="margin-top:1rem">
       <div class="footer-left">&copy; ViAGO Holdings Limited 2026. All rights reserved.</div>
       <div>
-        <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" style="height:28px;width:auto;opacity:0.45;display:block;">
+        <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" style="height:40px;width:auto;opacity:0.7;display:block;">
       </div>
     </div>
   </div>
