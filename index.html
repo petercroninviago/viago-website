@@ -194,10 +194,10 @@ nav {
 }
 .logo-chip-img {
   height: 30px; width: auto; display: block;
-  filter: grayscale(100%); opacity: 0.3;
+  opacity: 0.7;
   transition: opacity 0.2s;
 }
-.logo-chip-img:hover { opacity: 0.55; }
+.logo-chip-img:hover { opacity: 1; }
 
 /* SECTIONS */
 .section-cream {
@@ -434,7 +434,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Vi<span>A</span>GO</a>
+    <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO" style="height:32px;width:auto;display:block;"></a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -464,7 +464,7 @@ footer {
         <span>30+ years operations expertise</span>
       </div>
       <div class="ha ha5" style="margin-top:1.5rem;">
-        <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner" style="height:32px;width:auto;opacity:0.7;display:block;">
+        <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner" style="height:32px;width:auto;display:block;">
       </div>
     </div>
   </div>
