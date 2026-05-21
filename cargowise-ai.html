@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CargoWise AI — ViAGO</title>
+    <meta name="description" content="Commercial Invoice Parsing, ComplianceWise, Classification Assistant — what CargoWise AI features do, and what it takes to implement them properly.">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="logistics.html">Logistics</a>
+            <a href="software.html">Software</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="nav-cta">Book a Call</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero on-ink">
+    <div class="container">
+        <p class="eyebrow hero-anim hero-anim-d1">CargoWise AI</p>
+        <h1 class="hero-anim hero-anim-d2">What's actually available in CargoWise today — and what it takes to use it properly.</h1>
+        <p class="hero-sub hero-anim hero-anim-d3">The Value Pack AI features are live. Most firms have them turned on. Almost none have the workflow configuration to make them work.</p>
+    </div>
+</section>
+
+<!-- DOC 2 INFOGRAPHIC -->
+<section class="section-cream">
+    <div class="container">
+        <div class="reveal">
+            <p class="eyebrow">The Architecture</p>
+            <h2>How AI agents fit into a CargoWise sea import operation.</h2>
+            <p class="section-intro">Three zones. Three roles. One question: is your system configured so each zone can do its job?</p>
+        </div>
+        <div class="diagram-scroll reveal">
+          <svg viewBox="0 0 1200 356" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CargoWise AI architecture: three layers — Accelerate (PAVE board managing escalations and reviews), Delegate (AI agents: CI Parsing, ComplianceWise, Classification), Automate (sea import workflow spine with human and agent checkpoints)">
+            <rect width="1200" height="356" fill="#F4F1EA" rx="6"/>
+            <!-- ADA bracket spine (left side) -->
+            <!-- Accelerate bracket -->
+            <line x1="24" y1="12" x2="24" y2="112" stroke="#E8751A" stroke-width="2.5" stroke-opacity="0.85"/>
+            <line x1="24" y1="12" x2="34" y2="12" stroke="#E8751A" stroke-width="2.5" stroke-opacity="0.85"/>
+            <line x1="24" y1="112" x2="34" y2="112" stroke="#E8751A" stroke-width="2.5" stroke-opacity="0.85"/>
+            <text x="13" y="62" fill="#E8751A" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8.5" font-weight="700" text-anchor="middle" transform="rotate(-90,13,62)">ACCELERATE</text>
+            <!-- Delegate bracket -->
+            <line x1="24" y1="130" x2="24" y2="232" stroke="#1E3A5F" stroke-width="2.5"/>
+            <line x1="24" y1="130" x2="34" y2="130" stroke="#1E3A5F" stroke-width="2.5"/>
+            <line x1="24" y1="232" x2="34" y2="232" stroke="#1E3A5F" stroke-width="2.5"/>
+            <text x="13" y="181" fill="#1E3A5F" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8.5" font-weight="700" text-anchor="middle" transform="rotate(-90,13,181)">DELEGATE</text>
+            <!-- Automate bracket -->
+            <line x1="24" y1="250" x2="24" y2="338" stroke="#1E3A5F" stroke-width="2.5" stroke-opacity="0.45"/>
+            <line x1="24" y1="250" x2="34" y2="250" stroke="#1E3A5F" stroke-width="2.5" stroke-opacity="0.45"/>
+            <line x1="24" y1="338" x2="34" y2="338" stroke="#1E3A5F" stroke-width="2.5" stroke-opacity="0.45"/>
+            <text x="13" y="294" fill="#1E3A5F" fill-opacity="0.5" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8.5" font-weight="700" text-anchor="middle" transform="rotate(-90,13,294)">AUTOMATE</text>
+
+            <!-- ====== ZONE 1: ACCELERATE — PAVE Board ====== -->
+            <rect x="46" y="12" width="1146" height="100" rx="4" fill="#FFFFFF" fill-opacity="0.75"/>
+            <rect x="46" y="12" width="4" height="100" rx="2" fill="#E8751A"/>
+            <text x="60" y="30" fill="#E8751A" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8.5" font-weight="700" letter-spacing="2">PAVE BOARD</text>
+            <!-- Column 1: Direct Work -->
+            <rect x="60" y="36" width="360" height="66" rx="3" fill="#F4F1EA" stroke="#D9D4C7" stroke-width="1" stroke-dasharray="4 3"/>
+            <text x="72" y="54" fill="#1E3A5F" fill-opacity="0.45" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9" font-weight="700">DIRECT WORK</text>
+            <rect x="72" y="58" width="100" height="14" rx="7" fill="#E8751A" fill-opacity="0.12"/>
+            <text x="122" y="69" fill="#E8751A" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="7.5" font-weight="700" text-anchor="middle" fill-opacity="0.75">AGENT HANDLED</text>
+            <rect x="72" y="76" width="330" height="10" rx="2" fill="#1E3A5F" fill-opacity="0.05"/>
+            <rect x="72" y="90" width="290" height="10" rx="2" fill="#1E3A5F" fill-opacity="0.05"/>
+            <!-- Column 2: Scheduled Reviews -->
+            <rect x="438" y="36" width="360" height="66" rx="3" fill="#F4F1EA" stroke="#CADCFC" stroke-width="1.5"/>
+            <text x="450" y="54" fill="#1E3A5F" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9" font-weight="700">SCHEDULED REVIEWS</text>
+            <rect x="450" y="58" width="78" height="14" rx="7" fill="#CADCFC" fill-opacity="0.35"/>
+            <text x="489" y="69" fill="#1E3A5F" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">CHECKPOINT</text>
+            <rect x="450" y="76" width="330" height="10" rx="2" fill="#CADCFC" fill-opacity="0.2"/>
+            <rect x="450" y="90" width="290" height="10" rx="2" fill="#CADCFC" fill-opacity="0.2"/>
+            <!-- Column 3: Escalations -->
+            <rect x="816" y="36" width="360" height="66" rx="3" fill="#FFF8F3" stroke="#E8751A" stroke-width="2"/>
+            <text x="828" y="54" fill="#E8751A" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9" font-weight="700">ESCALATIONS</text>
+            <rect x="828" y="58" width="126" height="14" rx="7" fill="#E8751A" fill-opacity="0.18"/>
+            <text x="891" y="69" fill="#E8751A" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">PRIMARY HUMAN WORK</text>
+            <rect x="828" y="76" width="330" height="10" rx="2" fill="#E8751A" fill-opacity="0.08"/>
+            <rect x="828" y="90" width="290" height="10" rx="2" fill="#E8751A" fill-opacity="0.08"/>
+
+            <!-- ====== ZONE 2: DELEGATE — AI Agents ====== -->
+            <rect x="46" y="130" width="1146" height="102" rx="4" fill="#FFFFFF" fill-opacity="0.55"/>
+            <rect x="46" y="130" width="4" height="102" rx="2" fill="#1E3A5F"/>
+            <text x="60" y="148" fill="#1E3A5F" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8.5" font-weight="700" letter-spacing="2">AI AGENTS — CARGOWISE VALUE PACK</text>
+            <!-- Agent 1: CI Parsing -->
+            <rect x="60" y="154" width="360" height="68" rx="3" fill="#1E3A5F" fill-opacity="0.04" stroke="#1E3A5F" stroke-width="1.2" stroke-opacity="0.2"/>
+            <text x="72" y="173" fill="#1E3A5F" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9.5" font-weight="700">CI PARSING</text>
+            <rect x="72" y="177" width="56" height="14" rx="7" fill="#E8751A"/>
+            <text x="100" y="188" fill="#FFFFFF" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" font-weight="700" text-anchor="middle">LIVE TODAY</text>
+            <text x="72" y="210" fill="#1E3A5F" fill-opacity="0.6" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Reads invoices → extracts line items</text>
+            <!-- Agent 2: ComplianceWise -->
+            <rect x="438" y="154" width="360" height="68" rx="3" fill="#1E3A5F" fill-opacity="0.04" stroke="#1E3A5F" stroke-width="1.2" stroke-opacity="0.2"/>
+            <text x="450" y="173" fill="#1E3A5F" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9.5" font-weight="700">COMPLIANCEWISE</text>
+            <rect x="450" y="177" width="56" height="14" rx="7" fill="#E8751A"/>
+            <text x="478" y="188" fill="#FFFFFF" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" font-weight="700" text-anchor="middle">LIVE TODAY</text>
+            <text x="450" y="210" fill="#1E3A5F" fill-opacity="0.6" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Sanctions screening → flags for review</text>
+            <!-- Agent 3: Classification -->
+            <rect x="816" y="154" width="360" height="68" rx="3" fill="#1E3A5F" fill-opacity="0.04" stroke="#1E3A5F" stroke-width="1.2" stroke-opacity="0.2"/>
+            <text x="828" y="173" fill="#1E3A5F" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9.5" font-weight="700">CLASSIFICATION ASSISTANT</text>
+            <rect x="828" y="177" width="56" height="14" rx="7" fill="#E8751A"/>
+            <text x="856" y="188" fill="#FFFFFF" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" font-weight="700" text-anchor="middle">LIVE TODAY</text>
+            <text x="828" y="210" fill="#1E3A5F" fill-opacity="0.6" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">AI HS code suggestions → human sign-off</text>
+
+            <!-- ====== ZONE 3: AUTOMATE — Workflow Spine ====== -->
+            <rect x="46" y="250" width="1146" height="88" rx="4" fill="#FFFFFF" fill-opacity="0.35"/>
+            <rect x="46" y="250" width="4" height="88" rx="2" fill="#1E3A5F" fill-opacity="0.4"/>
+            <text x="60" y="268" fill="#1E3A5F" fill-opacity="0.5" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8.5" font-weight="700" letter-spacing="2">SEA IMPORT WORKFLOW SPINE</text>
+            <!-- Spine line -->
+            <line x1="72" y1="302" x2="1176" y2="302" stroke="#D9D4C7" stroke-width="1.5"/>
+            <!-- Node 1: Booking (human — circle) -->
+            <circle cx="90" cy="302" r="10" fill="#FFFFFF" stroke="#1E3A5F" stroke-width="1.8" stroke-opacity="0.6"/>
+            <text x="90" y="327" fill="#1E3A5F" fill-opacity="0.55" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" text-anchor="middle">Booking</text>
+            <!-- Node 2: Docs Received (agent — square) -->
+            <rect x="231" y="292" width="20" height="20" rx="2" fill="#E8751A" fill-opacity="0.15" stroke="#E8751A" stroke-width="1.5" stroke-opacity="0.7"/>
+            <text x="241" y="327" fill="#1E3A5F" fill-opacity="0.55" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" text-anchor="middle">Docs Received</text>
+            <!-- Node 3: Customs Entry (human — circle) -->
+            <circle cx="402" cy="302" r="10" fill="#FFFFFF" stroke="#1E3A5F" stroke-width="1.8" stroke-opacity="0.6"/>
+            <text x="402" y="327" fill="#1E3A5F" fill-opacity="0.55" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" text-anchor="middle">Customs Entry</text>
+            <!-- Node 4: CI Parsing (agent — square) -->
+            <rect x="563" y="292" width="20" height="20" rx="2" fill="#E8751A" fill-opacity="0.15" stroke="#E8751A" stroke-width="1.5" stroke-opacity="0.7"/>
+            <text x="573" y="327" fill="#1E3A5F" fill-opacity="0.55" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" text-anchor="middle">CI Parsing</text>
+            <!-- Node 5: ABF Assessment (human — circle) -->
+            <circle cx="734" cy="302" r="10" fill="#FFFFFF" stroke="#1E3A5F" stroke-width="1.8" stroke-opacity="0.6"/>
+            <text x="734" y="327" fill="#1E3A5F" fill-opacity="0.55" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" text-anchor="middle">ABF Assessment</text>
+            <!-- Node 6: Compliance (agent — square) -->
+            <rect x="895" y="292" width="20" height="20" rx="2" fill="#E8751A" fill-opacity="0.15" stroke="#E8751A" stroke-width="1.5" stroke-opacity="0.7"/>
+            <text x="905" y="327" fill="#1E3A5F" fill-opacity="0.55" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" text-anchor="middle">Compliance</text>
+            <!-- Node 7: Billing (human — circle) -->
+            <circle cx="1066" cy="302" r="10" fill="#FFFFFF" stroke="#1E3A5F" stroke-width="1.8" stroke-opacity="0.6"/>
+            <text x="1066" y="327" fill="#1E3A5F" fill-opacity="0.55" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" text-anchor="middle">Billing Sign-off</text>
+            <!-- Node 8: Delivery (agent — square) -->
+            <rect x="1157" y="292" width="20" height="20" rx="2" fill="#E8751A" fill-opacity="0.15" stroke="#E8751A" stroke-width="1.5" stroke-opacity="0.7"/>
+            <text x="1167" y="327" fill="#1E3A5F" fill-opacity="0.55" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" text-anchor="middle">Delivery</text>
+            <!-- Legend -->
+            <circle cx="62" cy="346" r="6" fill="#FFFFFF" stroke="#1E3A5F" stroke-width="1.5" stroke-opacity="0.6"/>
+            <text x="74" y="350" fill="#1E3A5F" fill-opacity="0.45" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8">Human checkpoint</text>
+            <rect x="130" y="340" width="12" height="12" rx="2" fill="#E8751A" fill-opacity="0.15" stroke="#E8751A" stroke-width="1.5" stroke-opacity="0.7"/>
+            <text x="148" y="350" fill="#1E3A5F" fill-opacity="0.45" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8">Agent-handled step</text>
+          </svg>
+        </div>
+    </div>
+</section>
+
+<!-- THREE AI FEATURES -->
+<section class="section-cream" style="padding-top: 0; border-top: 1px solid var(--rule);">
+    <div class="container">
+        <div class="reveal">
+            <p class="eyebrow">Available Today &middot; CargoWise Value Pack</p>
+            <h2>Three tools. One question: is your workflow ready for them?</h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step reveal">
+                <p class="step-number">Tool 1</p>
+                <h3>Commercial Invoice Parsing</h3>
+                <p>Reads commercial invoices and extracts line-item data into CargoWise. Eliminates manual data entry on the document processing step. Requires clean milestone configuration to trigger correctly.</p>
+            </div>
+            <div class="step reveal">
+                <p class="step-number">Tool 2</p>
+                <h3>ComplianceWise</h3>
+                <p>Automated compliance screening against trade sanctions and restricted party lists. Flags shipments that need human review before customs lodgement. Only works if it fires at the right point in the workflow.</p>
+            </div>
+            <div class="step reveal">
+                <p class="step-number">Tool 3</p>
+                <h3>Classification Assistant</h3>
+                <p>AI-assisted tariff classification. Suggests HS codes based on cargo description. Requires a human check at lodgement — statutory responsibility stays with the broker.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHERE VIAG0 FITS -->
+<section class="section-ink on-ink">
+    <div class="container">
+        <div class="reveal">
+            <p class="eyebrow">The Implementation Gap</p>
+            <h2>Having the tools switched on is not the same as having them work.</h2>
+            <p>The most common failure mode: firms activate the Value Pack AI features against a CargoWise configuration that was never designed for agents. The document parsing triggers at the wrong milestone. The compliance screening fires after the customs entry is already lodged. The classification suggestions go to an inbox nobody watches.</p>
+            <p>ViAGO audits your CargoWise configuration, maps your sea import workflow against the agent touchpoints, and configures the system so the tools actually do what they're supposed to.</p>
+        </div>
+        <div class="stat-callouts reveal">
+            <div class="stat-item">
+                <p class="stat-label">Credential</p>
+                <p class="stat-value">CargoWise Service Partner</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-label">Credential</p>
+                <p class="stat-value">Authors of the PAVE Certification Programme</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section on-ink">
+    <div class="container">
+        <div class="reveal">
+            <h2>Want to know if your CargoWise configuration is agent-ready?</h2>
+            <p>We audit your milestone configuration, map it against the agent touchpoints, and tell you exactly what needs to change before you turn the Value Pack tools on.</p>
+            <a href="contact.html" class="hero-cta">Book a workflow audit</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div>
+            <span class="footer-brand">ViAGO</span>
+            <span class="footer-tagline">Prepare your people. Prepare your operation.</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="logistics.html">Logistics</a>
+            <a href="software.html">Software</a>
+            <a href="cargowise-ai.html">CargoWise AI</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">&copy; ViAGO Holdings Limited 2026. All rights reserved.</span>
+        <div class="footer-badge">
+            <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner">
+        </div>
+    </div>
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

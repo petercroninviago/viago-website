@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navia Logistics Case Study — ViAGO</title>
+    <meta name="description" content="How Navia Logistics implemented CargoWise productivity tools and Black Belt in Thinking across their business, substantially reducing operational pain points.">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="logistics.html">Logistics</a>
+            <a href="software.html">Software</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="nav-cta">Book a Call</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero on-ink">
+    <div class="container">
+        <p class="eyebrow hero-anim hero-anim-d1">Case Study</p>
+        <p class="hero-sub hero-anim hero-anim-d2" style="font-size: 1.5rem; font-weight: bold; color: var(--cream); margin-bottom: 1rem;">Navia</p>
+        <h1 class="hero-anim hero-anim-d3">Navia Logistics — CargoWise productivity tools and BBIT across the business.</h1>
+    </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section-cream">
+    <div class="container">
+        <div class="cs-overview reveal">
+            <dl class="cs-meta">
+                <dt>Industry</dt>
+                <dd>Freight Forwarding &amp; Logistics</dd>
+                <dt>Location</dt>
+                <dd>Australia</dd>
+                <dt>Platform</dt>
+                <dd>CargoWise One</dd>
+                <dt>Engagement</dt>
+                <dd>CargoWise productivity tools + Black Belt in Thinking</dd>
+            </dl>
+            <div>
+                <h2>The challenge</h2>
+                <p>Navia Logistics was growing but experiencing the pain points that come with growth in freight forwarding: workloads that spiked unpredictably, processes that were hard to hand off, and a team that was skilled but not operating from a shared system.</p>
+                <p>The goal was to reduce operational pain, make work more visible, and give the team a shared framework for thinking through problems — not just a new dashboard.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- THE CHALLENGE -->
+<section class="section-cream" style="padding-top: 0; border-top: 1px solid var(--rule);">
+    <div class="container">
+        <div class="reveal">
+            <h2>The problem.</h2>
+            <p>Growth creates complexity. As Navia's volume increased, the informal coordination mechanisms that worked at smaller scale stopped working. Work was being done in the wrong order. Some team members were overloaded while others had capacity. Problems were being discovered at the worst possible moment — when the customer was already affected.</p>
+            <p>The underlying issue wasn't the team. It was the absence of a system that made the flow visible and gave people a shared way of deciding what to work on next.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT WE DID -->
+<section class="section-ink on-ink">
+    <div class="container">
+        <div class="reveal">
+            <h2>The work.</h2>
+            <p>ViAGO implemented CargoWise productivity tools across the Navia operation — configuring the workflow engine to make work visible, prioritised, and balanced across the team.</p>
+            <p>Alongside the CargoWise implementation, ViAGO delivered Black Belt in Thinking (BBIT) training across the business. The aim: give the team the thinking skills to use the new system well, and to handle the judgement calls that no system can make for them.</p>
+            <p>The combination matters. A productivity tool tells you what's happening. BBIT gives your people the thinking skills to decide what to do about it.</p>
+        </div>
+    </div>
+</section>
+
+<!-- THE OUTCOME -->
+<section class="section-cream">
+    <div class="container">
+        <div class="reveal">
+            <h2>What changed.</h2>
+            <blockquote class="pull-quote-cream">"Thus far results have been very positive and we have seen a lot of our initial pain points disappear or substantially reduced."</blockquote>
+            <p class="pull-attribution-cream">Navia Logistics</p>
+            <ul class="outcome-points" style="margin-top: 2rem;">
+                <li>Initial pain points substantially reduced across the operation.</li>
+                <li>Work became visible and prioritised — team members knew what to work on next.</li>
+                <li>BBIT gave the team a shared framework for problem-solving that continued to pay dividends beyond the implementation.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section on-ink">
+    <div class="container">
+        <div class="reveal">
+            <h2>Want to see what this looks like in your operation?</h2>
+            <p>We've done this across freight forwarding and customs brokerage operations at scale. If you're on CargoWise, we can tell you quickly what configuration would give you the same visibility.</p>
+            <a href="contact.html" class="hero-cta">Book a Call</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div>
+            <span class="footer-brand">ViAGO</span>
+            <span class="footer-tagline">Prepare your people. Prepare your operation.</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="logistics.html">Logistics</a>
+            <a href="software.html">Software</a>
+            <a href="cargowise-ai.html">CargoWise AI</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">&copy; ViAGO Holdings Limited 2026. All rights reserved.</span>
+        <div class="footer-badge">
+            <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner">
+        </div>
+    </div>
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

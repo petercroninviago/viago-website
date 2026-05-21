@@ -1,591 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViAGO — Prepare Your People. Prepare Your Operation.</title>
-    <meta name="description" content="ViAGO helps logistics and software firms prepare their people and their operations for the agent era. Flow specialists with 20+ years of Theory of Constraints practice.">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViAGO — Workflow AI + PAVE Specialists</title>
+<meta name="description" content="ViAGO makes your operations run the way you want them to. CargoWise Service Partner specialising in Workflow, AI and PAVE for freight forwarders and customs brokers.">
 
-        :root {
-            --ink: #0A1628;
-            --cream: #F4F1EA;
-            --burnt-orange: #E8751A;
-            --navy: #1E3A5F;
-            --soft-orange: #F4A261;
-            --ice-blue: #CADCFC;
-            --card-white: #FFFFFF;
-            --muted: #6B7280;
-            --rule: #D9D4C7;
-            --max-w: 1200px;
-        }
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #0A1628;
+  --cream: #F4F1EA;
+  --orange: #E8751A;
+  --navy: #1E3A5F;
+  --soft-orange: #F4A261;
+  --ice: #CADCFC;
+  --white: #FFFFFF;
+  --muted: #6B7280;
+  --rule: #D9D4C7;
+  --max: 1200px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Calibri, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
 
-        html { scroll-behavior: smooth; }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(202,220,252,0.07);
+  height: 68px;
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 2.5rem;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700; font-style: italic;
+  font-size: 1.5rem; color: var(--cream);
+  text-decoration: none; letter-spacing: -0.01em;
+}
+.nav-logo span { color: var(--orange); }
+.nav-toggle {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 2px;
+  background: var(--ice); border-radius: 2px;
+}
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--ice); text-decoration: none;
+  opacity: 0.75; transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  background: var(--orange) !important;
+  color: var(--cream) !important;
+  padding: 0.5rem 1.4rem !important;
+  border-radius: 3px !important;
+  font-weight: 600 !important; font-size: 0.8rem !important;
+  text-transform: uppercase !important; letter-spacing: 0.04em !important;
+  opacity: 1 !important; transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--soft-orange) !important; }
 
-        body {
-            font-family: Georgia, 'Times New Roman', serif;
-            background: var(--cream);
-            color: var(--navy);
-            line-height: 1.6;
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-        }
+/* HERO */
+.hero {
+  background: var(--ink);
+  padding: 8.5rem 0 5.5rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(202,220,252,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(202,220,252,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.hero-grid {
+  display: block;
+  max-width: 780px;
+  position: relative;
+}
+.eyebrow {
+  font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--orange); margin-bottom: 1.1rem;
+  display: block;
+}
+.on-ink .eyebrow { color: var(--soft-orange); }
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 700; font-style: italic;
+  color: var(--cream); line-height: 1.18;
+  margin-bottom: 1.5rem;
+}
+.hero-sub {
+  font-size: 1rem; font-weight: 400;
+  color: var(--ice); opacity: 1;
+  line-height: 1.75; max-width: 500px;
+  margin-bottom: 2.25rem;
+}
+.hero-actions { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 3rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--orange); color: var(--cream);
+  padding: 0.75rem 1.75rem; border-radius: 3px;
+  font-size: 0.82rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  text-decoration: none; transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--soft-orange); transform: translateY(-1px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: var(--ice); font-size: 0.82rem; font-weight: 500;
+  text-decoration: none; opacity: 0.65;
+  border-bottom: 1px solid rgba(202,220,252,0.25);
+  padding-bottom: 1px; transition: opacity 0.2s;
+}
+.btn-ghost:hover { opacity: 1; }
+.hero-stamp {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(202,220,252,0.08);
+  display: flex; gap: 1.5rem; flex-wrap: nowrap; align-items: center;
+}
+.hero-stamp span {
+  font-size: 0.72rem; font-weight: 500;
+  color: var(--ice); opacity: 0.65; letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.hero-stamp span::before {
+  content: '·'; margin-right: 0.5rem;
+  color: var(--orange); opacity: 0.7;
+}
+.hero-stamp span:first-child::before { display: none; }
 
-        .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
-        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; }
+/* DIAGRAM BAND */
+.diagram-band {
+  background: var(--ink);
+  padding: 0 0 4rem;
+}
+.diagram-band-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 2.5rem;
+}
+.diagram-border {
+  border: 1px solid rgba(202,220,252,0.08);
+  border-radius: 6px; overflow: hidden;
+}
+.diagram-border svg {
+  width: 100%; height: auto; display: block;
+  min-width: 680px;
+}
+.diagram-scroll-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            background: var(--ink);
-            border-bottom: 1px solid rgba(202, 220, 252, 0.08);
-        }
+/* LOGO STRIP */
+.logo-strip {
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.75rem 0;
+}
+.logo-strip-inner { display: flex; align-items: center; }
+.logo-label {
+  font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--muted); margin-right: 3rem;
+  white-space: nowrap; flex-shrink: 0;
+}
+.logo-chips { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.logo-chip {
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--navy); opacity: 0.28;
+  letter-spacing: 0.04em; white-space: nowrap;
+  text-transform: uppercase;
+}
 
-        .nav-inner {
-            max-width: var(--max-w);
-            margin: 0 auto;
-            padding: 0 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 72px;
-        }
+/* SECTIONS */
+.section-cream {
+  background: var(--cream);
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.section-ink {
+  background: var(--ink);
+  padding: 6rem 0;
+  position: relative;
+}
+.section-ink::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: var(--orange);
+}
+h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  line-height: 1.22; color: var(--ink);
+  margin-bottom: 1rem;
+}
+.on-ink h2 { color: var(--cream); }
+.section-lead {
+  font-size: 1rem; font-weight: 400;
+  color: var(--navy); line-height: 1.75;
+  max-width: 580px; margin-bottom: 3rem;
+}
+.on-ink .section-lead { color: var(--ice); }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            height: 72px;
-        }
+/* ADA CARDS */
+.ada-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.ada-card {
+  background: var(--white);
+  border-radius: 4px;
+  border-top: 3px solid var(--orange);
+  padding: 2rem 1.75rem;
+  position: relative;
+}
+.ada-num {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3.5rem; font-style: italic; font-weight: 700;
+  color: var(--orange); opacity: 0.08;
+  position: absolute; top: 0.75rem; right: 1.25rem;
+  line-height: 1; pointer-events: none;
+}
+.ada-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 1.25rem; color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.ada-card p {
+  font-size: 0.9rem; line-height: 1.72;
+  color: var(--navy); font-weight: 400;
+}
 
-        .nav-logo img {
-            height: 40px;
-            width: auto;
-            display: block;
-            /* Wordmark is black, V-mark is blue — invert to render as cream on Ink nav */
-            filter: brightness(0) invert(1);
-            transition: opacity 0.2s;
-        }
+/* QUOTE */
+.quote-section {
+  background: var(--ink);
+  padding: 6rem 0;
+  position: relative;
+}
+.quote-section::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: var(--orange);
+}
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: center;
+}
+.quote-left { position: relative; }
+.quote-mark {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 9rem; font-style: italic; font-weight: 700;
+  color: var(--orange); opacity: 0.12;
+  line-height: 0.8;
+  position: absolute; top: -1.5rem; left: -1.5rem;
+  pointer-events: none;
+}
+.quote-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-style: italic; font-weight: 700;
+  color: var(--cream); line-height: 1.55;
+  position: relative; z-index: 1;
+  padding-left: 0.75rem;
+}
+.quote-attr {
+  margin-top: 1.75rem;
+  padding-left: 0.75rem;
+  font-size: 0.82rem; font-weight: 400;
+  color: var(--ice); opacity: 0.5;
+}
+.quote-attr strong {
+  display: block; color: var(--soft-orange);
+  font-weight: 600; opacity: 1;
+  margin-bottom: 0.2rem; font-size: 0.9rem;
+}
+.quote-context {
+  font-size: 0.95rem; line-height: 1.75; font-weight: 400;
+  color: var(--ice); opacity: 1; margin-bottom: 2rem;
+}
+.case-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.82rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--orange); text-decoration: none;
+  transition: gap 0.2s;
+}
+.case-link:hover { gap: 0.8rem; }
 
-        .nav-logo:hover img { opacity: 0.85; }
+/* FIND OUT MORE */
+.fom-section {
+  background: var(--cream);
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+.fom-label {
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--navy); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 2rem;
+  display: block;
+}
+.fom-buttons {
+  display: flex; align-items: center;
+  justify-content: center; gap: 1.25rem; flex-wrap: wrap;
+}
+.btn-fom-ink {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--ink); color: var(--cream);
+  padding: 0.9rem 2rem; border-radius: 3px;
+  font-size: 0.88rem; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.02em;
+  border: 2px solid var(--ink);
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-fom-ink:hover { background: var(--navy); border-color: var(--navy); transform: translateY(-1px); }
+.btn-fom-orange {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--orange); color: var(--cream);
+  padding: 0.9rem 2rem; border-radius: 3px;
+  font-size: 0.88rem; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.02em;
+  border: 2px solid var(--orange);
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-fom-orange:hover { background: var(--soft-orange); border-color: var(--soft-orange); transform: translateY(-1px); }
+.btn-arrow { transition: transform 0.2s; display: inline-block; }
+.btn-fom-ink:hover .btn-arrow,
+.btn-fom-orange:hover .btn-arrow { transform: translateX(3px); }
 
-        .nav-links { display: flex; align-items: center; gap: 2.25rem; }
+/* CTA */
+.cta-section {
+  background: var(--ink);
+  padding: 6rem 0;
+  position: relative; text-align: center;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: var(--orange);
+}
+.cta-section h2 { max-width: 560px; margin: 0 auto 1rem; }
+.cta-section p {
+  font-size: 0.97rem; font-weight: 300;
+  color: var(--ice); opacity: 0.75;
+  max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.75;
+}
 
-        .nav-links a {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.875rem;
-            color: var(--ice-blue);
-            text-decoration: none;
-            letter-spacing: 0.01em;
-            transition: color 0.2s;
-        }
+/* FOOTER */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(202,220,252,0.06);
+  padding: 2.5rem 0;
+}
+.footer-inner {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-left { font-size: 0.78rem; color: var(--muted); }
+.footer-left strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; color: var(--ice); opacity: 0.4;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.78rem; color: var(--muted);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--ice); }
 
-        .nav-links a:hover { color: var(--cream); }
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.ha { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+.ha1 { animation-delay: 0.05s; }
+.ha2 { animation-delay: 0.18s; }
+.ha3 { animation-delay: 0.3s; }
+.ha4 { animation-delay: 0.44s; }
+.ha5 { animation-delay: 0.58s; }
 
-        .nav-links a.nav-cta {
-            background: var(--burnt-orange);
-            color: var(--cream);
-            padding: 0.55rem 1.5rem;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .nav-links a.nav-cta:hover {
-            background: var(--soft-orange);
-            transform: translateY(-1px);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .nav-toggle span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--ice-blue);
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-
-        @media (max-width: 768px) {
-            .nav-toggle { display: block; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 72px; left: 0; right: 0;
-                flex-direction: column;
-                background: var(--ink);
-                padding: 1.5rem 2.5rem 2rem;
-                gap: 1.25rem;
-                border-bottom: 1px solid rgba(202, 220, 252, 0.08);
-            }
-            .nav-links.open { display: flex; }
-        }
-
-        /* EYEBROW */
-        .eyebrow {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.7rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--burnt-orange);
-            margin-bottom: 1rem;
-        }
-
-        .on-ink .eyebrow { color: var(--soft-orange); }
-
-        /* HERO */
-        .hero {
-            background: var(--ink);
-            padding: 9rem 0 5.5rem;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--cream);
-            line-height: 1.2;
-            max-width: 780px;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-sub {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--ice-blue);
-            max-width: 600px;
-            margin-bottom: 1.75rem;
-            line-height: 1.5;
-        }
-
-        .hero-body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--ice-blue);
-            max-width: 620px;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            opacity: 0.85;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.85rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            color: var(--cream);
-            background: var(--burnt-orange);
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .hero-cta:hover {
-            background: var(--soft-orange);
-            transform: translateY(-1px);
-        }
-
-        .hero-stamp {
-            margin-top: 3.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(202, 220, 252, 0.1);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .hero-stamp span {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.8rem;
-            color: var(--ice-blue);
-            opacity: 0.6;
-        }
-
-        @media (max-width: 600px) {
-            .hero-stamp { flex-direction: column; gap: 0.75rem; }
-        }
-
-        /* CREAM SECTION */
-        .section-cream {
-            background: var(--cream);
-            padding: 5.5rem 0;
-            border-bottom: 1px solid var(--rule);
-        }
-
-        .section-cream:last-of-type { border-bottom: none; }
-
-        .section-cream h2 {
-            font-size: clamp(1.7rem, 3vw, 2.4rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--ink);
-            line-height: 1.25;
-            max-width: 700px;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-cream p {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--navy);
-            line-height: 1.7;
-            max-width: 660px;
-            margin-bottom: 1.25rem;
-        }
-
-        .section-cream p:last-child { margin-bottom: 0; }
-
-        .section-intro {
-            font-size: 1.15rem !important;
-            font-family: Georgia, 'Times New Roman', serif !important;
-            font-style: italic;
-            color: var(--navy) !important;
-            margin-bottom: 2.5rem !important;
-            max-width: 600px !important;
-        }
-
-        /* INK SECTION */
-        .section-ink {
-            background: var(--ink);
-            padding: 5.5rem 0;
-            position: relative;
-        }
-
-        .section-ink::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 5px;
-            background: var(--burnt-orange);
-        }
-
-        .section-ink h2 {
-            font-size: clamp(1.7rem, 3vw, 2.4rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--cream);
-            line-height: 1.25;
-            max-width: 700px;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-ink p {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--ice-blue);
-            line-height: 1.7;
-            max-width: 660px;
-            margin-bottom: 1.25rem;
-        }
-
-        .section-ink p:last-child { margin-bottom: 0; }
-
-        /* STEP CARDS */
-        .steps { margin-top: 3rem; }
-
-        .step {
-            background: var(--card-white);
-            border-radius: 4px;
-            padding: 2rem 2.25rem;
-            margin-bottom: 1.25rem;
-            border-top: 4px solid var(--burnt-orange);
-            max-width: 700px;
-        }
-
-        .step-number {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--burnt-orange);
-            margin-bottom: 0.4rem;
-        }
-
-        .step h3 {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--ink);
-            margin-bottom: 0.75rem;
-        }
-
-        .step p {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.95rem;
-            color: var(--navy);
-            line-height: 1.7;
-            margin-bottom: 0;
-        }
-
-        /* CTA SECTION */
-        .cta-section {
-            background: var(--ink);
-            padding: 5.5rem 0;
-        }
-
-        .cta-section h2 {
-            font-size: clamp(1.7rem, 3vw, 2.4rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--cream);
-            line-height: 1.25;
-            max-width: 600px;
-            margin-bottom: 1.25rem;
-        }
-
-        .cta-section p {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--ice-blue);
-            line-height: 1.7;
-            max-width: 560px;
-            margin-bottom: 2rem;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--ink);
-            border-top: 1px solid rgba(202, 220, 252, 0.08);
-            padding: 2.5rem 0;
-        }
-
-        .footer-inner {
-            max-width: var(--max-w);
-            margin: 0 auto;
-            padding: 0 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-left {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
-
-        .footer-left strong {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-style: italic;
-            color: var(--ice-blue);
-            opacity: 0.5;
-        }
-
-        .footer-links { display: flex; gap: 1.75rem; }
-
-        .footer-links a {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.8rem;
-            color: var(--muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover { color: var(--ice-blue); }
-
-        @media (max-width: 600px) {
-            .footer-inner { flex-direction: column; align-items: flex-start; }
-        }
-
-        /* ANIMATIONS */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-anim {
-            opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
-        }
-
-        .hero-anim-d1 { animation-delay: 0.1s; }
-        .hero-anim-d2 { animation-delay: 0.2s; }
-        .hero-anim-d3 { animation-delay: 0.35s; }
-        .hero-anim-d4 { animation-delay: 0.5s; }
-        .hero-anim-d5 { animation-delay: 0.65s; }
-    </style>
+@media (max-width: 900px) {
+  .ada-grid { grid-template-columns: 1fr; }
+  .quote-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .nav-toggle { display: flex; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; align-items: flex-start;
+    position: absolute; top: 68px; left: 0; right: 0;
+    background: var(--ink); padding: 1.5rem 2.5rem;
+    border-top: 1px solid rgba(202,220,252,0.08);
+    gap: 1.25rem;
+  }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .hero-stamp { flex-wrap: wrap; gap: 0.75rem; }
+  .hero-stamp span { white-space: normal; }
+  .fom-buttons { flex-direction: column; align-items: stretch; }
+}
+</style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <div class="nav-inner">
-            <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
-            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="nav-links">
-                <a href="logistics.html">Logistics</a>
-                <a href="software.html">Software</a>
-                <a href="about.html">About</a>
-                <a href="contact.html" class="nav-cta">Book a Call</a>
-            </div>
-        </div>
-    </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Vi<span>A</span>GO</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="logistics.html">Logistics</a>
+      <a href="software.html">Software</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero on-ink">
-        <div class="container">
-            <p class="eyebrow hero-anim hero-anim-d1">Prepare your people. Prepare your operation.</p>
-            <h1 class="hero-anim hero-anim-d2">The future of work isn't humans versus agents. It's humans managing agents.</h1>
-            <p class="hero-sub hero-anim hero-anim-d3">That's a different job. Almost nobody is training for it. ViAGO is.</p>
-            <p class="hero-body hero-anim hero-anim-d4">We help logistics and software firms prepare their people and their operations for the agent era. 20+ years of Theory of Constraints practice. Authors of the PAVE certification for CargoWise. The only firm combining deep constraint management expertise with hands-on operational configuration.</p>
-            <a href="contact.html" class="hero-cta hero-anim hero-anim-d5">Book a Call</a>
-            <div class="hero-stamp hero-anim hero-anim-d5">
-                <span>CargoWise Service Partner</span>
-                <span>Authors of the PAVE Certification Programme</span>
-                <span>20+ years Theory of Constraints practice</span>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero on-ink">
+  <div class="container">
+    <div class="hero-grid">
+      <span class="eyebrow ha ha1">Workflow AI + PAVE Specialists · CargoWise Service Partner</span>
+      <h1 class="ha ha2">ViAGO makes your operations run the way you want them to.</h1>
+      <p class="hero-sub ha ha3">We work with freight forwarders and customs brokers to maximise their CargoWise investment, run smoother operations, and build the capability to handle whatever comes next — including AI.</p>
+      <div class="hero-actions ha ha4">
+        <a href="contact.html" class="btn-primary">Book a Call <span class="btn-arrow">&#8594;</span></a>
+        <a href="cargowise-ai.html" class="btn-ghost">See how it works in CargoWise &#8594;</a>
+      </div>
+      <div class="hero-stamp ha ha5">
+        <span>Co-developed PAVE with WiseTech Global</span>
+        <span>Built for the AI era</span>
+        <span>30+ years operations expertise</span>
+      </div>
+      <div class="ha ha5" style="margin-top:1.5rem;">
+        <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner" style="height:32px;width:auto;opacity:0.7;display:block;">
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- AUTOMATE DELEGATE ACCELERATE -->
-    <section class="section-cream">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">The Shift</p>
-                <h2>Automate. Delegate. Accelerate.</h2>
-                <p class="section-intro">The agent era arrives in three moves. Each one raises the demands on your people.</p>
-            </div>
-            <div class="steps">
-                <div class="step reveal">
-                    <p class="step-number">Step 1</p>
-                    <h3>Automate</h3>
-                    <p>Strip out the predictable, rule-based work. Automated emails, status updates, triggers. This is setup for everything that follows. Without it, AI agents can't plug in cleanly and your people end up being the conveyor belt between machines.</p>
-                </div>
-                <div class="step reveal">
-                    <p class="step-number">Step 2</p>
-                    <h3>Delegate</h3>
-                    <p>Hand business as usual operations to AI agents. Humans stay in the loop only at critical checkpoints: customs lodgements, billing sign-off, architectural decisions. Agents signal completion via milestones rather than requiring constant supervision.</p>
-                </div>
-                <div class="step reveal">
-                    <p class="step-number">Step 3</p>
-                    <h3>Accelerate</h3>
-                    <p>As agents take the predictable work, the human role shifts from doer to manager of an AI team. Escalations become the primary workload. Because escalations are variable and unpredictable, surging occurs. Your people need the tools to manage this new flow, and the thinking skills to handle what agents can't.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- PAVE DIAGRAM -->
+<div class="diagram-band">
+  <div class="diagram-band-inner">
+    <div class="diagram-scroll-wrap reveal">
+      <div class="diagram-border">
+        <svg viewBox="0 0 1200 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PAVE task board: Direct Human Work, Scheduled Reviews from agents, and Escalations. Variation risk chart showing surge buffering. Workflow spine showing the sea import shipment journey.">
+          <rect width="1200" height="440" fill="#0A1628" rx="6"/>
+          <text x="16" y="20" fill="#F4A261" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="2.5">PAVE TASK BOARD</text>
+          <text x="724" y="20" fill="#F4A261" font-family="system-ui,sans-serif" font-size="9" font-weight="700" letter-spacing="2.5">VARIATION RISK</text>
+          <line x1="710" y1="10" x2="710" y2="276" stroke="#F4F1EA" stroke-opacity="0.08" stroke-width="1"/>
+          <!-- CARD 1: DIRECT HUMAN WORK -->
+          <rect x="16" y="28" width="210" height="242" rx="5" fill="#F4F1EA" fill-opacity="0.02" stroke="#F4F1EA" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="5 4"/>
+          <text x="28" y="52" fill="#F4F1EA" fill-opacity="0.35" font-family="system-ui,sans-serif" font-size="10" font-weight="700">DIRECT HUMAN WORK</text>
+          <text x="28" y="65" fill="#F4F1EA" fill-opacity="0.2" font-family="system-ui,sans-serif" font-size="8">Not from agents · always human</text>
+          <rect x="28" y="82" width="178" height="15" rx="3" fill="#F4F1EA" fill-opacity="0.04"/>
+          <text x="36" y="94" fill="#F4F1EA" fill-opacity="0.28" font-family="system-ui,sans-serif" font-size="9">· Client &amp; commercial decisions</text>
+          <rect x="28" y="101" width="178" height="15" rx="3" fill="#F4F1EA" fill-opacity="0.04"/>
+          <text x="36" y="113" fill="#F4F1EA" fill-opacity="0.28" font-family="system-ui,sans-serif" font-size="9">· Relationship management</text>
+          <rect x="28" y="120" width="178" height="15" rx="3" fill="#F4F1EA" fill-opacity="0.04"/>
+          <text x="36" y="132" fill="#F4F1EA" fill-opacity="0.28" font-family="system-ui,sans-serif" font-size="9">· What agents can't do yet</text>
+          <!-- CARD 2: SCHEDULED REVIEWS -->
+          <rect x="244" y="28" width="210" height="242" rx="5" fill="#CADCFC" fill-opacity="0.05" stroke="#CADCFC" stroke-opacity="0.55" stroke-width="1.5"/>
+          <text x="256" y="52" fill="#CADCFC" font-family="system-ui,sans-serif" font-size="10" font-weight="700">SCHEDULED REVIEWS</text>
+          <text x="256" y="65" fill="#CADCFC" fill-opacity="0.6" font-family="system-ui,sans-serif" font-size="8">From AI agents · predictable · steady</text>
+          <rect x="256" y="82" width="178" height="15" rx="3" fill="#CADCFC" fill-opacity="0.08"/>
+          <text x="264" y="94" fill="#CADCFC" font-family="system-ui,sans-serif" font-size="9">· Customs entry approval</text>
+          <rect x="256" y="101" width="178" height="15" rx="3" fill="#CADCFC" fill-opacity="0.08"/>
+          <text x="264" y="113" fill="#CADCFC" font-family="system-ui,sans-serif" font-size="9">· Low-confidence doc flag</text>
+          <rect x="256" y="120" width="178" height="15" rx="3" fill="#CADCFC" fill-opacity="0.08"/>
+          <text x="264" y="132" fill="#CADCFC" font-family="system-ui,sans-serif" font-size="9">· Billing sign-off to client</text>
+          <!-- CARD 3: ESCALATIONS -->
+          <rect x="472" y="28" width="210" height="242" rx="5" fill="#E8751A" fill-opacity="0.07" stroke="#E8751A" stroke-opacity="0.85" stroke-width="2"/>
+          <text x="484" y="52" fill="#F4A261" font-family="system-ui,sans-serif" font-size="10" font-weight="700">ESCALATIONS</text>
+          <text x="484" y="65" fill="#F4A261" fill-opacity="0.6" font-family="system-ui,sans-serif" font-size="8">From AI agents · unexpected · surge risk</text>
+          <rect x="484" y="82" width="178" height="15" rx="3" fill="#E8751A" fill-opacity="0.12"/>
+          <text x="492" y="94" fill="#F4A261" font-family="system-ui,sans-serif" font-size="9">· DAFF biosecurity hold</text>
+          <rect x="484" y="101" width="178" height="15" rx="3" fill="#E8751A" fill-opacity="0.12"/>
+          <text x="492" y="113" fill="#F4A261" font-family="system-ui,sans-serif" font-size="9">· Document discrepancy</text>
+          <rect x="484" y="120" width="178" height="15" rx="3" fill="#E8751A" fill-opacity="0.12"/>
+          <text x="492" y="132" fill="#F4A261" font-family="system-ui,sans-serif" font-size="9">· Vessel delay</text>
+          <!-- VARIATION RISK CHART -->
+          <line x1="724" y1="248" x2="1185" y2="248" stroke="#F4F1EA" stroke-opacity="0.12" stroke-width="1"/>
+          <text x="724" y="48" fill="#F4F1EA" fill-opacity="0.28" font-family="system-ui,sans-serif" font-size="8">NORMAL CADENCE</text>
+          <rect x="728" y="188" width="22" height="60" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
+          <rect x="756" y="181" width="22" height="67" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
+          <rect x="784" y="185" width="22" height="63" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
+          <rect x="812" y="179" width="22" height="69" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
+          <rect x="840" y="186" width="22" height="62" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
+          <rect x="868" y="182" width="22" height="66" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
+          <rect x="896" y="187" width="22" height="61" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
+          <text x="980" y="48" fill="#E8751A" fill-opacity="0.9" font-family="system-ui,sans-serif" font-size="8" font-weight="700">SURGE</text>
+          <rect x="932" y="160" width="22" height="88" rx="2" fill="#E8751A" fill-opacity="0.40"/>
+          <rect x="960" y="130" width="22" height="118" rx="2" fill="#E8751A" fill-opacity="0.55"/>
+          <rect x="988" y="98" width="22" height="150" rx="2" fill="#E8751A" fill-opacity="0.70"/>
+          <rect x="1016" y="112" width="22" height="136" rx="2" fill="#E8751A" fill-opacity="0.60"/>
+          <rect x="1044" y="142" width="22" height="106" rx="2" fill="#E8751A" fill-opacity="0.45"/>
+          <line x1="920" y1="168" x2="1082" y2="168" stroke="#F4A261" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="5 3"/>
+          <text x="1090" y="165" fill="#F4A261" fill-opacity="0.65" font-family="system-ui,sans-serif" font-size="8" font-weight="700">PAVE BUFFER</text>
+          <text x="724" y="270" fill="#F4F1EA" fill-opacity="0.18" font-family="system-ui,sans-serif" font-size="8">Volume spikes absorbed by PAVE buffers — operators see priority, not chaos</text>
+          <!-- WORKFLOW SPINE -->
+          <line x1="40" y1="360" x2="1160" y2="360" stroke="#CADCFC" stroke-width="1.4" opacity="0.55"/>
+          <g font-family="-apple-system,system-ui,sans-serif" fill="#CADCFC">
+            <g transform="translate(100,360)">
+              <circle r="8" fill="#0A1628" stroke="#CADCFC" stroke-width="2"/>
+              <circle r="3.5" fill="#CADCFC"/>
+              <text y="22" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" opacity="0.88">JOB REGISTRATION</text>
+            </g>
+            <g transform="translate(310,360)">
+              <circle r="8" fill="#0A1628" stroke="#CADCFC" stroke-width="2"/>
+              <circle r="3.5" fill="#CADCFC"/>
+              <text y="22" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" opacity="0.88">DOCS RECEIVED</text>
+            </g>
+            <g transform="translate(520,360)">
+              <circle r="8" fill="#0A1628" stroke="#CADCFC" stroke-width="2"/>
+              <circle r="3.5" fill="#CADCFC"/>
+              <text y="22" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" opacity="0.88">SEND TO CARRIER</text>
+            </g>
+            <g transform="translate(730,360)">
+              <circle r="8" fill="#0A1628" stroke="#E8751A" stroke-width="2.5"/>
+              <circle r="3.5" fill="#E8751A"/>
+              <text y="22" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" fill="#F4A261">CUSTOMS CLEARANCE</text>
+              <text y="-16" text-anchor="middle" font-size="7" font-weight="600" letter-spacing="1" fill="#F4A261" opacity="0.8">HUMAN SIGN-OFF</text>
+            </g>
+            <g transform="translate(940,360)">
+              <circle r="8" fill="#0A1628" stroke="#CADCFC" stroke-width="2"/>
+              <circle r="3.5" fill="#CADCFC"/>
+              <text y="22" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" opacity="0.88">CARTAGE</text>
+            </g>
+            <g transform="translate(1100,360)">
+              <circle r="8" fill="#0A1628" stroke="#E8751A" stroke-width="2.5"/>
+              <circle r="3.5" fill="#E8751A"/>
+              <text y="22" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" fill="#F4A261">BILLING</text>
+              <text y="-16" text-anchor="middle" font-size="7" font-weight="600" letter-spacing="1" fill="#F4A261" opacity="0.8">HUMAN SIGN-OFF</text>
+            </g>
+          </g>
+          <text x="16" y="338" fill="#F4A261" font-family="system-ui,sans-serif" font-size="7" font-weight="700" letter-spacing="2" opacity="0.6">WORKFLOW ENGINE</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- PILLAR 1 -->
-    <section class="section-ink on-ink">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">The Problem</p>
-                <h2>When agents take the work, the constraint moves. It doesn't disappear.</h2>
-                <p>The bottleneck used to be operator capacity: volume of entries processed, code written, tickets resolved. When agents take that work, the bottleneck becomes operator judgement under pressure. Escalations that don't fit a pattern. Architectural decisions nobody pre-specified. Operational failures that need a diagnosis, not a procedure.</p>
-                <p>Most firms investing in AI are focused entirely on the automation side. Almost none are preparing the humans who'll be managing the output. That gap is where operations break down, and it's the gap ViAGO was built to close.</p>
-            </div>
-        </div>
-    </section>
+<!-- LOGO STRIP -->
+<div class="logo-strip">
+  <div class="container">
+    <div class="logo-strip-inner">
+      <span class="logo-label">Trusted by</span>
+      <div class="logo-chips">
+        <span class="logo-chip">Mainfreight</span>
+        <span class="logo-chip">Navia Logistics</span>
+        <span class="logo-chip">I.H. Hunter</span>
+        <span class="logo-chip">WiseTech Global</span>
+        <span class="logo-chip">GW Scott</span>
+        <span class="logo-chip">Small World</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- PILLAR 2 -->
-    <section class="section-cream">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">The Mistake</p>
-                <h2>Sequence matters more than speed.</h2>
-                <p>Automating the wrong things first, or handing work to agents before workflows are clean and constraints are managed, creates new problems faster than it solves old ones. Agents can't plug into a messy operation cleanly. Your best people end up buried under an avalanche of agent-generated work they can't properly review or direct.</p>
-                <p>The firms that get this right don't move fastest. They move in the right order: map the constraint, clean the workflows, automate what's ready, then delegate to agents with humans positioned to manage the output rather than drown in it.</p>
-            </div>
-        </div>
-    </section>
+<!-- ADA -->
+<section class="section-cream">
+  <div class="container">
+    <span class="eyebrow reveal">How We Work</span>
+    <h2 style="color:var(--ink)" class="reveal">Automate. Delegate. Accelerate.</h2>
+    <div class="ada-grid" style="margin-top:2.5rem;">
+      <div class="ada-card reveal">
+        <span class="ada-num">1</span>
+        <h3>Automate</h3>
+        <p>Milestones, tasks and triggers configured to match your SOPs. Every step of every shipment mapped, sequenced and ready to run consistently.</p>
+      </div>
+      <div class="ada-card reveal">
+        <span class="ada-num">2</span>
+        <h3>Delegate</h3>
+        <p>Tasks are delegated to AI agents to handle the predictable, business-as-usual work. High touch, high volume, low complexity handled without your people touching it.</p>
+      </div>
+      <div class="ada-card reveal">
+        <span class="ada-num">3</span>
+        <h3>Accelerate</h3>
+        <p>When agents handle the routine, your team's job changes. Reviews and escalations become the whole job. When volumes spike, so does the pressure. PAVE buffers that surge and keeps the right work in front of the right person.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- PILLAR 3 -->
-    <section class="section-ink on-ink">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">The Discipline</p>
-                <h2>Flow is a discipline, not a project.</h2>
-                <p>Managing the constraint once isn't enough. It shifts as conditions change: when agents are introduced, when the team scales, when a new service line lands. Keeping operations running well requires an ongoing discipline. Work made visible. Bottlenecks protected and fed. Responses to risk signals pre-committed and executed without second-guessing under pressure.</p>
-                <p>This discipline has been proven in high-stakes operations for decades. PAVE in logistics and PACE in software are how it's made practical. Not dashboards that tell you something's wrong, but systems that tell you what to do about it and when.</p>
-            </div>
+<!-- QUOTE -->
+<section class="quote-section on-ink">
+  <div class="container">
+    <div class="quote-grid reveal">
+      <div class="quote-left">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">Our business grew from five or six people, where you knew where every job was, to 20-plus people where all of a sudden you weren't across every customer or every job. PAVE changed that.</p>
+        <div class="quote-attr">
+          <strong>Lachlan Hunter</strong>
+          Director, I.H. Hunter &nbsp;&#183;&nbsp; Customs Broker &amp; Freight Forwarder
         </div>
-    </section>
+      </div>
+      <div class="quote-right">
+        <span class="eyebrow">Case Study</span>
+        <h2>Visibility at 20 people that felt impossible at seven.</h2>
+        <p class="quote-context">I.H. Hunter implemented PAVE across their import operation. Increased visibility, jobs completing in the right order, and a team that could finally see what was coming rather than just what was already late.</p>
+        <a href="case-study-ih-hunter.html" class="case-link">Read the full story &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- PILLAR 4 -->
-    <section class="section-cream">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">The Capability</p>
-                <h2>Thinking is the only skill that scales with every change.</h2>
-                <p>Every stage of Automate, Delegate, Accelerate makes higher demands on human judgement than the stage before it. Automating requires people who understand their own workflows clearly enough to map them. Delegating requires people who know when an agent has got it wrong, why, and how to fix the system. Accelerating requires rapid cause-and-effect reasoning under pressure.</p>
-                <p>These aren't personality traits. They're trainable skills. We train your people in the systems thinking discipline that sits underneath all three steps and makes them effective at each of them. Not a standalone personal development programme. The prerequisite for the rest of the operation working as designed.</p>
-            </div>
-        </div>
-    </section>
+<!-- FIND OUT MORE -->
+<section class="fom-section reveal">
+  <div class="container">
+    <span class="fom-label">Find out more</span>
+    <div class="fom-buttons">
+      <a href="cargowise-ai.html" class="btn-fom-ink">
+        How It Works in CargoWise <span class="btn-arrow">&#8594;</span>
+      </a>
+      <a href="contact.html" class="btn-fom-orange">
+        Book an AI Readiness Assessment <span class="btn-arrow">&#8594;</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- CTA -->
-    <section class="cta-section on-ink">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">Don't Wait</p>
-                <h2>The window is open, but it's not open forever.</h2>
-                <p>Agent-driven operations are 12 to 24 months from being table-stakes. Training a workforce in systems thinking takes 6 to 12 months to land properly. Firms that start now have a shot at being ready. Firms that wait will try to retrofit under pressure and discover they can't.</p>
-                <a href="contact.html" class="hero-cta">Book a Call</a>
-            </div>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>ViAGO</strong> &nbsp;&#183;&nbsp; Prepare your people. Prepare your operation.
+      </div>
+      <div class="footer-links">
+        <a href="logistics.html">Logistics</a>
+        <a href="software.html">Software</a>
+        <a href="cargowise-ai.html">CargoWise AI</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-inner" style="margin-top:1rem">
+      <div class="footer-left">&copy; ViAGO Holdings Limited 2026. All rights reserved.</div>
+      <div>
+        <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner" style="height:28px;width:auto;opacity:0.45;display:block;">
+      </div>
+    </div>
+  </div>
+</footer>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-left">
-                <strong>ViAGO</strong> &nbsp;&middot;&nbsp; Prepare your people. Prepare your operation.
-            </div>
-            <div class="footer-links">
-                <a href="logistics.html">Logistics</a>
-                <a href="software.html">Software</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-        </div>
-        <div class="footer-inner" style="margin-top: 1.25rem;">
-            <div class="footer-left">&copy; ViAGO Holdings Limited 2026. All rights reserved.</div>
-        </div>
-    </footer>
-
-    <script>
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-        reveals.forEach(el => observer.observe(el));
-    </script>
-
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>

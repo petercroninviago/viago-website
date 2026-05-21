@@ -4,567 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — ViAGO</title>
-    <meta name="description" content="ViAGO has spent 20+ years helping businesses think better. We specialise in Theory of Constraints practice, flow management, and thinking-skills training.">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --ink: #0A1628;
-            --cream: #F4F1EA;
-            --burnt-orange: #E8751A;
-            --navy: #1E3A5F;
-            --soft-orange: #F4A261;
-            --ice-blue: #CADCFC;
-            --card-white: #FFFFFF;
-            --muted: #6B7280;
-            --rule: #D9D4C7;
-            --max-w: 1200px;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: Georgia, 'Times New Roman', serif;
-            background: var(--cream);
-            color: var(--navy);
-            line-height: 1.6;
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; }
-
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            background: var(--ink);
-            border-bottom: 1px solid rgba(202, 220, 252, 0.08);
-        }
-
-        .nav-inner {
-            max-width: var(--max-w);
-            margin: 0 auto;
-            padding: 0 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 72px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            height: 72px;
-        }
-
-        .nav-logo img {
-            height: 40px;
-            width: auto;
-            display: block;
-            /* Wordmark is black, V-mark is blue — invert to render as cream on Ink nav */
-            filter: brightness(0) invert(1);
-            transition: opacity 0.2s;
-        }
-
-        .nav-logo:hover img { opacity: 0.85; }
-
-        .nav-links { display: flex; align-items: center; gap: 2.25rem; }
-
-        .nav-links a {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.875rem;
-            color: var(--ice-blue);
-            text-decoration: none;
-            letter-spacing: 0.01em;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: var(--cream); }
-        .nav-links a.active { color: var(--cream); }
-
-        .nav-links a.nav-cta {
-            background: var(--burnt-orange);
-            color: var(--cream);
-            padding: 0.55rem 1.5rem;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .nav-links a.nav-cta:hover {
-            background: var(--soft-orange);
-            transform: translateY(-1px);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .nav-toggle span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--ice-blue);
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-
-        @media (max-width: 768px) {
-            .nav-toggle { display: block; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 72px; left: 0; right: 0;
-                flex-direction: column;
-                background: var(--ink);
-                padding: 1.5rem 2.5rem 2rem;
-                gap: 1.25rem;
-                border-bottom: 1px solid rgba(202, 220, 252, 0.08);
-            }
-            .nav-links.open { display: flex; }
-        }
-
-        /* EYEBROW */
-        .eyebrow {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.7rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--burnt-orange);
-            margin-bottom: 1rem;
-        }
-
-        .on-ink .eyebrow { color: var(--soft-orange); }
-
-        /* HERO */
-        .hero {
-            background: var(--ink);
-            padding: 9rem 0 5.5rem;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--cream);
-            line-height: 1.2;
-            max-width: 780px;
-            margin-bottom: 1.75rem;
-        }
-
-        .hero-body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--ice-blue);
-            max-width: 640px;
-            line-height: 1.7;
-            opacity: 0.85;
-        }
-
-        /* CREAM SECTION */
-        .section-cream {
-            background: var(--cream);
-            padding: 5.5rem 0;
-            border-bottom: 1px solid var(--rule);
-        }
-
-        .section-cream:last-of-type { border-bottom: none; }
-
-        .section-cream h2 {
-            font-size: clamp(1.7rem, 3vw, 2.4rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--ink);
-            line-height: 1.25;
-            max-width: 700px;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-cream p {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--navy);
-            line-height: 1.7;
-            max-width: 660px;
-            margin-bottom: 1.25rem;
-        }
-
-        .section-cream p:last-child { margin-bottom: 0; }
-
-        /* INK SECTION */
-        .section-ink {
-            background: var(--ink);
-            padding: 5.5rem 0;
-            position: relative;
-        }
-
-        .section-ink::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 5px;
-            background: var(--burnt-orange);
-        }
-
-        .section-ink h2 {
-            font-size: clamp(1.7rem, 3vw, 2.4rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--cream);
-            line-height: 1.25;
-            max-width: 700px;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-ink p {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--ice-blue);
-            line-height: 1.7;
-            max-width: 660px;
-            margin-bottom: 1.25rem;
-        }
-
-        .section-ink p:last-child { margin-bottom: 0; }
-
-        /* VALUES */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .value-card {
-            background: var(--card-white);
-            border-radius: 4px;
-            padding: 2rem 2.25rem;
-            border-top: 4px solid var(--burnt-orange);
-        }
-
-        .value-card h3 {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--ink);
-            margin-bottom: 0.75rem;
-        }
-
-        .value-card p {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.95rem;
-            color: var(--navy);
-            line-height: 1.7;
-            margin-bottom: 0;
-            max-width: none;
-        }
-
-        /* TEAM */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-
-        .team-card {
-            text-align: center;
-        }
-
-        .team-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.25rem;
-            border: 3px solid var(--rule);
-            filter: grayscale(10%);
-            background: var(--card-white);
-        }
-
-        .team-card h3 {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--ink);
-            margin-bottom: 0.3rem;
-        }
-
-        .team-role {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.85rem;
-            color: var(--burnt-orange);
-            font-weight: bold;
-        }
-
-        /* CTA SECTION */
-        .cta-section {
-            background: var(--ink);
-            padding: 5.5rem 0;
-        }
-
-        .cta-section h2 {
-            font-size: clamp(1.7rem, 3vw, 2.4rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--cream);
-            line-height: 1.25;
-            max-width: 600px;
-            margin-bottom: 1.25rem;
-        }
-
-        .cta-section p {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--ice-blue);
-            line-height: 1.7;
-            max-width: 520px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.85rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            color: var(--cream);
-            background: var(--burnt-orange);
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .hero-cta:hover {
-            background: var(--soft-orange);
-            transform: translateY(-1px);
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--ink);
-            border-top: 1px solid rgba(202, 220, 252, 0.08);
-            padding: 2.5rem 0;
-        }
-
-        .footer-inner {
-            max-width: var(--max-w);
-            margin: 0 auto;
-            padding: 0 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-left {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
-
-        .footer-left strong {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-style: italic;
-            color: var(--ice-blue);
-            opacity: 0.5;
-        }
-
-        .footer-links { display: flex; gap: 1.75rem; }
-
-        .footer-links a {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.8rem;
-            color: var(--muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover { color: var(--ice-blue); }
-
-        @media (max-width: 600px) {
-            .footer-inner { flex-direction: column; align-items: flex-start; }
-        }
-
-        /* ANIMATIONS */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-anim {
-            opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
-        }
-
-        .hero-anim-d1 { animation-delay: 0.1s; }
-        .hero-anim-d2 { animation-delay: 0.2s; }
-        .hero-anim-d3 { animation-delay: 0.35s; }
-    </style>
+    <meta name="description" content="ViAGO — Theory of Constraints specialists since 1995. Co-creators of PAVE. Authors of the CargoWise PAVE certification. Based in Sydney, Australia.">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <div class="nav-inner">
-            <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
-            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="nav-links">
-                <a href="logistics.html">Logistics</a>
-                <a href="software.html">Software</a>
-                <a href="about.html" class="active">About</a>
-                <a href="contact.html" class="nav-cta">Book a Call</a>
-            </div>
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="logistics.html">Logistics</a>
+            <a href="software.html">Software</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="nav-cta">Book a Call</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero on-ink">
-        <div class="container">
-            <p class="eyebrow hero-anim hero-anim-d1">About ViAGO</p>
-            <h1 class="hero-anim hero-anim-d2">20+ years helping businesses think better.</h1>
-            <p class="hero-body hero-anim hero-anim-d3">ViAGO is a specialist consultancy built on the Theory of Constraints. We help logistics and software firms prepare their people and their operations for the agent era through flow management, systems thinking, and practical training that changes how teams make decisions under pressure.</p>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero on-ink">
+    <div class="container">
+        <p class="eyebrow hero-anim hero-anim-d1">About ViAGO</p>
+        <h1 class="hero-anim hero-anim-d2">We've been doing this since 1995. The agent era is why it matters now.</h1>
+    </div>
+</section>
 
-    <!-- WHAT WE DO -->
-    <section class="section-cream">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">What We Do</p>
-                <h2>We don't teach people to do their job better. We change how they think about the job.</h2>
-                <p>We create whole-system alignment, improve inter-team communication, and give everyone a common language for decision making and problem solving that controls risk and supports growth.</p>
-                <p>We deliver this through visualising problems and solutions in cause and effect. Simplifying seemingly complex business challenges, and sorting the facts from the noise. That's how you ensure your people are, at any one point, making the right decisions and working on the things that will deliver the greatest possible return.</p>
-                <p>For over 20 years, we've trained business owners, managers, leaders, and operational staff in logical thinking processes and leadership skills across almost every industry imaginable. Combining training experience with a project approach, we implement reliable change in teams and people.</p>
-            </div>
+<!-- MISSION -->
+<section class="section-cream">
+    <div class="container">
+        <div class="reveal">
+            <h2>Flow specialists. Not generalists with an AI slide deck.</h2>
+            <p>ViAGO was built around one discipline: Theory of Constraints. We've spent 30 years understanding how work flows through complex systems, where it gets stuck, and how to fix the system rather than the symptoms.</p>
+            <p>We apply that discipline to logistics operations through CargoWise and PAVE, and to software teams through PACE. The agent era doesn't change the discipline. It makes it more urgent.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- VALUES -->
-    <section class="section-ink on-ink">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">How We Work</p>
-                <h2>What drives us.</h2>
-            </div>
-            <div class="values-grid">
-                <div class="value-card reveal">
-                    <h3>Passionate about business</h3>
-                    <p>We love business, we love performance, and we love freedom. A business on autopilot sets you free. And a business on autopilot needs good systems.</p>
-                </div>
-                <div class="value-card reveal">
-                    <h3>High standards</h3>
-                    <p>We prioritise mission, team, then individual. If anything doesn't meet our collective high expectations, the team swarms in to make good. Client mission under threat? All hands on deck.</p>
-                </div>
-                <div class="value-card reveal">
-                    <h3>Success-oriented</h3>
-                    <p>When things don't go to plan, we get persistent and we get creative. Those are two words our clients often use to describe us. We don't give up. We like to win and we like you to win.</p>
-                </div>
+<!-- TEAM -->
+<section class="section-cream" style="padding-top: 0; border-top: 1px solid var(--rule);">
+    <div class="container">
+        <div class="reveal">
+            <p class="eyebrow">The Team</p>
+            <h2>The people behind the work.</h2>
+        </div>
+        <div class="team-photo-layout reveal">
+            <figure>
+                <img src="assets/peter-cronin_med.png" alt="Peter Cronin, Managing Director">
+                <figcaption class="team-photo-caption">Peter Cronin, Managing Director</figcaption>
+            </figure>
+            <div>
+                <p>30 years in Theory of Constraints practice. Co-created PAVE with WiseTech Global. Author of the CargoWise PAVE certification programme.</p>
+                <p>Peter founded ViAGO in 1995 with a single focus: applying TOC to make operations run better. That focus hasn't changed. The context has.</p>
             </div>
         </div>
-    </section>
 
-    <!-- TEAM -->
-    <section class="section-cream">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">The Team</p>
-                <h2>Meet the executive team.</h2>
-            </div>
-            <div class="team-grid">
-                <div class="team-card reveal">
-                    <img src="https://viagointernational.com/wp-content/uploads/2020/07/peter-cronin_sml.png" alt="Peter Cronin" class="team-photo">
-                    <h3>Peter Cronin</h3>
-                    <p class="team-role">CEO &amp; Head Instructor</p>
-                </div>
-                <div class="team-card reveal">
-                    <img src="https://viagointernational.com/wp-content/uploads/2020/07/ben-gorringe_sml.png" alt="Ben Gorringe" class="team-photo">
-                    <h3>Ben Gorringe</h3>
-                    <p class="team-role">Head Product Manager</p>
-                </div>
-                <div class="team-card reveal">
-                    <img src="https://viagointernational.com/wp-content/uploads/2020/07/peter-thorby_sml.png" alt="Peter Thorby" class="team-photo">
-                    <h3>Peter Thorby</h3>
-                    <p class="team-role">Finance Director</p>
-                </div>
-                <div class="team-card reveal">
-                    <img src="https://viagointernational.com/wp-content/uploads/2020/07/bryce-england_sml.png" alt="Bryce England" class="team-photo">
-                    <h3>Bryce England</h3>
-                    <p class="team-role">Director &amp; Head of Content</p>
-                </div>
+        <!-- TODO: Add team photos here -->
+        <div style="margin-top: 2rem;">
+            <div class="team-placeholder reveal">
+                <span>Photo coming soon</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- CTA -->
-    <section class="cta-section on-ink">
-        <div class="container">
-            <div class="reveal">
-                <p class="eyebrow">Get in Touch</p>
-                <h2>Ready to talk?</h2>
-                <p>Find out how ViAGO can help your team think better, decide faster, and get more done.</p>
-                <a href="contact.html" class="hero-cta">Book a Call</a>
+<!-- CREDENTIALS -->
+<section class="section-ink on-ink">
+    <div class="container">
+        <div class="reveal">
+            <p class="eyebrow">Why ViAGO</p>
+            <h2>Four things no other CargoWise partner has in combination.</h2>
+        </div>
+        <div class="cred-grid reveal">
+            <div class="cred-card">
+                <h3>30+ years TOC practice</h3>
+                <p>Theory of Constraints in logistics operations since 1995. Not a recent pivot to AI — the same discipline applied to a new context.</p>
+            </div>
+            <div class="cred-card">
+                <h3>CargoWise Service Partner</h3>
+                <p>Certified partner. Deep specialism in PAVE configuration and workflow optimisation across freight forwarding and customs brokerage.</p>
+                <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner" style="max-height: 28px; margin-top: 1rem; filter: brightness(0) invert(1); opacity: 0.5;">
+            </div>
+            <div class="cred-card">
+                <h3>Authors of the PAVE Certification</h3>
+                <p>Engaged by WiseTech Global to write the PAVE certification programme, now available in WiseTech Academy. We define what good looks like.</p>
+            </div>
+            <div class="cred-card">
+                <h3>Black Belt in Thinking</h3>
+                <p>Owners of BBIT — the thinking-skills programme deployed across WiseTech and major freight operations globally. <a href="https://blackbeltinthinking.com" target="_blank" rel="noopener">blackbeltinthinking.com</a></p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-left">
-                <strong>ViAGO</strong> &nbsp;&middot;&nbsp; Prepare your people. Prepare your operation.
-            </div>
-            <div class="footer-links">
-                <a href="logistics.html">Logistics</a>
-                <a href="software.html">Software</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
+<!-- PARTNER BADGES -->
+<section class="section-cream">
+    <div class="container">
+        <div class="reveal">
+            <p class="eyebrow">Credentials</p>
+            <div class="badge-strip">
+                <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner">
+                <img src="assets/wisetech-logo.png" alt="WiseTech Global" style="max-height: 32px; filter: grayscale(100%) opacity(50%);">
             </div>
         </div>
-        <div class="footer-inner" style="margin-top: 1.25rem;">
-            <div class="footer-left">&copy; ViAGO Holdings Limited 2026. All rights reserved.</div>
-        </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-        reveals.forEach(el => observer.observe(el));
-    </script>
+<!-- CTA -->
+<section class="cta-section on-ink">
+    <div class="container">
+        <div class="reveal">
+            <p class="eyebrow">Don't Wait</p>
+            <h2>The window is open. It won't stay open.</h2>
+            <p>Agent-driven operations are 12 to 24 months from being table-stakes. Training a workforce in systems thinking takes 6 to 12 months to land properly. Firms that start now have a shot at being ready. Firms that wait will try to retrofit under pressure and discover they can't.</p>
+            <a href="contact.html" class="hero-cta">Book a Call</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div>
+            <span class="footer-brand">ViAGO</span>
+            <span class="footer-tagline">Prepare your people. Prepare your operation.</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="logistics.html">Logistics</a>
+            <a href="software.html">Software</a>
+            <a href="cargowise-ai.html">CargoWise AI</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">&copy; ViAGO Holdings Limited 2026. All rights reserved.</span>
+        <div class="footer-badge">
+            <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner">
+        </div>
+    </div>
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

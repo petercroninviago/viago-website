@@ -5,446 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact — ViAGO</title>
     <meta name="description" content="Book a call with ViAGO. We help logistics and software firms prepare their people and operations for the agent era.">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --ink: #0A1628;
-            --cream: #F4F1EA;
-            --burnt-orange: #E8751A;
-            --navy: #1E3A5F;
-            --soft-orange: #F4A261;
-            --ice-blue: #CADCFC;
-            --card-white: #FFFFFF;
-            --muted: #6B7280;
-            --rule: #D9D4C7;
-            --max-w: 1200px;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: Georgia, 'Times New Roman', serif;
-            background: var(--cream);
-            color: var(--navy);
-            line-height: 1.6;
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; }
-
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            background: var(--ink);
-            border-bottom: 1px solid rgba(202, 220, 252, 0.08);
-        }
-
-        .nav-inner {
-            max-width: var(--max-w);
-            margin: 0 auto;
-            padding: 0 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 72px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            height: 72px;
-        }
-
-        .nav-logo img {
-            height: 40px;
-            width: auto;
-            display: block;
-            /* Wordmark is black, V-mark is blue — invert to render as cream on Ink nav */
-            filter: brightness(0) invert(1);
-            transition: opacity 0.2s;
-        }
-
-        .nav-logo:hover img { opacity: 0.85; }
-
-        .nav-links { display: flex; align-items: center; gap: 2.25rem; }
-
-        .nav-links a {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.875rem;
-            color: var(--ice-blue);
-            text-decoration: none;
-            letter-spacing: 0.01em;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: var(--cream); }
-        .nav-links a.active { color: var(--cream); }
-
-        .nav-links a.nav-cta {
-            background: var(--burnt-orange);
-            color: var(--cream);
-            padding: 0.55rem 1.5rem;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .nav-links a.nav-cta:hover {
-            background: var(--soft-orange);
-            transform: translateY(-1px);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .nav-toggle span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--ice-blue);
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-
-        @media (max-width: 768px) {
-            .nav-toggle { display: block; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 72px; left: 0; right: 0;
-                flex-direction: column;
-                background: var(--ink);
-                padding: 1.5rem 2.5rem 2rem;
-                gap: 1.25rem;
-                border-bottom: 1px solid rgba(202, 220, 252, 0.08);
-            }
-            .nav-links.open { display: flex; }
-        }
-
-        /* EYEBROW */
-        .eyebrow {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.7rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--burnt-orange);
-            margin-bottom: 1rem;
-        }
-
-        .on-ink .eyebrow { color: var(--soft-orange); }
-
-        /* HERO */
-        .hero {
-            background: var(--ink);
-            padding: 9rem 0 5.5rem;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--cream);
-            line-height: 1.2;
-            max-width: 780px;
-            margin-bottom: 1.75rem;
-        }
-
-        .hero-body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--ice-blue);
-            max-width: 560px;
-            line-height: 1.7;
-            opacity: 0.85;
-        }
-
-        /* CONTENT */
-        .contact-section {
-            background: var(--cream);
-            padding: 5.5rem 0;
-        }
-
-        .contact-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        @media (max-width: 768px) {
-            .contact-layout {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-        }
-
-        .contact-info h2 {
-            font-size: clamp(1.7rem, 3vw, 2.2rem);
-            font-weight: bold;
-            font-style: italic;
-            color: var(--ink);
-            line-height: 1.25;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info p {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--navy);
-            line-height: 1.7;
-            margin-bottom: 1.25rem;
-        }
-
-        .contact-detail {
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--rule);
-        }
-
-        .contact-detail-label {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.7rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-detail-value {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            color: var(--navy);
-            margin-bottom: 1.75rem;
-        }
-
-        .contact-detail-value a {
-            color: var(--burnt-orange);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .contact-detail-value a:hover { color: var(--soft-orange); }
-
-        /* FORM CONTAINER */
-        .form-container {
-            background: var(--card-white);
-            border-radius: 4px;
-            border-top: 4px solid var(--burnt-orange);
-            padding: 2.5rem;
-            min-height: 400px;
-        }
-
-        .form-placeholder {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.9rem;
-            color: var(--muted);
-            text-align: center;
-            padding: 4rem 1rem;
-        }
-
-        .form-placeholder code {
-            display: block;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: var(--burnt-orange);
-            background: var(--cream);
-            padding: 1rem;
-            border-radius: 4px;
-            text-align: left;
-            word-break: break-all;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--ink);
-            border-top: 1px solid rgba(202, 220, 252, 0.08);
-            padding: 2.5rem 0;
-        }
-
-        .footer-inner {
-            max-width: var(--max-w);
-            margin: 0 auto;
-            padding: 0 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-left {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
-
-        .footer-left strong {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-style: italic;
-            color: var(--ice-blue);
-            opacity: 0.5;
-        }
-
-        .footer-links { display: flex; gap: 1.75rem; }
-
-        .footer-links a {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.8rem;
-            color: var(--muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover { color: var(--ice-blue); }
-
-        @media (max-width: 600px) {
-            .footer-inner { flex-direction: column; align-items: flex-start; }
-        }
-
-        /* ANIMATIONS */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-anim {
-            opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
-        }
-
-        .hero-anim-d1 { animation-delay: 0.1s; }
-        .hero-anim-d2 { animation-delay: 0.2s; }
-        .hero-anim-d3 { animation-delay: 0.35s; }
-    </style>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <div class="nav-inner">
-            <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
-            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="nav-links">
-                <a href="logistics.html">Logistics</a>
-                <a href="software.html">Software</a>
-                <a href="about.html">About</a>
-                <a href="contact.html" class="active nav-cta">Book a Call</a>
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="logistics.html">Logistics</a>
+            <a href="software.html">Software</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="nav-cta">Book a Call</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero on-ink">
+    <div class="container">
+        <p class="eyebrow hero-anim hero-anim-d1">Get in Touch</p>
+        <h1 class="hero-anim hero-anim-d2">Book a call. No pitch deck, no sales process.</h1>
+        <p class="hero-sub hero-anim hero-anim-d3">Tell us what you're working with. We'll tell you what we'd do about it.</p>
+        <a href="https://outlook.office365.com/owa/calendar/ViAGOTeamBookingPage@viagointernational.onmicrosoft.com/bookings/" class="hero-cta hero-anim hero-anim-d4" target="_blank" rel="noopener">Book a Time</a>
+    </div>
+</section>
+
+<!-- CONTACT DETAILS -->
+<section class="section-cream">
+    <div class="container">
+        <div class="reveal">
+            <h2>Contact details</h2>
+        </div>
+        <div class="contact-grid reveal">
+            <div>
+                <p class="contact-label">Email</p>
+                <p class="contact-detail"><a href="mailto:info@viagointernational.com">info@viagointernational.com</a></p>
+
+                <p class="contact-label" style="margin-top: 2rem;">Location</p>
+                <p class="contact-detail">Sydney, Australia</p>
+
+                <p class="contact-label" style="margin-top: 2rem;">Booking</p>
+                <p class="contact-detail">
+                    <a href="https://outlook.office365.com/owa/calendar/ViAGOTeamBookingPage@viagointernational.onmicrosoft.com/bookings/" target="_blank" rel="noopener">Schedule a call online →</a>
+                </p>
+            </div>
+            <div>
+                <p class="contact-label">What to expect</p>
+                <p class="contact-detail" style="margin-top: 0.5rem;">A 30-minute call. We'll ask about your current operation, your CargoWise configuration, and where you're feeling the most pressure. No obligation.</p>
+                <p class="contact-detail">We work with freight forwarders, customs brokers, and 3PLs on CargoWise, and founder-led software firms. If you're on CargoWise and thinking about the agent era, we probably have something useful to say.</p>
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- HERO -->
-    <section class="hero on-ink">
-        <div class="container">
-            <p class="eyebrow hero-anim hero-anim-d1">Contact</p>
-            <h1 class="hero-anim hero-anim-d2">Let's talk about your operation.</h1>
-            <p class="hero-body hero-anim hero-anim-d3">Whether you're a logistics firm preparing for agent-driven operations or a software company trying to manage the expert bottleneck, we'd like to hear what you're dealing with. No pitch, no pressure. Just a conversation about what's actually going on.</p>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div>
+            <span class="footer-brand">ViAGO</span>
+            <span class="footer-tagline">Prepare your people. Prepare your operation.</span>
         </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-layout">
-                <div class="contact-info reveal">
-                    <p class="eyebrow">Get in Touch</p>
-                    <h2>Book a call or drop us a line.</h2>
-                    <p>The best way to start is a 30-minute call. We'll ask about your operation, your team, and what's keeping you up at night. If we can help, we'll tell you how. If we can't, we'll tell you that too.</p>
-
-                    <div class="contact-detail">
-                        <p class="contact-detail-label">Email</p>
-                        <p class="contact-detail-value"><a href="mailto:info@viagointernational.com">info@viagointernational.com</a></p>
-
-                        <p class="contact-detail-label">Location</p>
-                        <p class="contact-detail-value">Sydney, Australia</p>
-
-                        <p class="contact-detail-label">Book Directly</p>
-                        <p class="contact-detail-value"><a href="https://outlook.office365.com/owa/calendar/ViAGOTeamBookingPage@viagointernational.onmicrosoft.com/bookings/" target="_blank" rel="noopener">Open our booking calendar</a></p>
-                    </div>
-                </div>
-
-                <div class="form-container reveal">
-                    <!-- 
-                        HUBSPOT FORM EMBED
-                        Replace this placeholder with your HubSpot form embed code.
-                        
-                        It will look something like:
-                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-                        <script>
-                            hbspt.forms.create({
-                                region: "na1",
-                                portalId: "YOUR_PORTAL_ID",
-                                formId: "YOUR_FORM_ID"
-                            });
-                        </script>
-                    -->
-                    <div class="form-placeholder">
-                        <p>HubSpot booking form will go here.</p>
-                        <code>Replace this div with your HubSpot embed code from:<br>HubSpot > Marketing > Forms > [Your Form] > Embed</code>
-                    </div>
-                </div>
-            </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="logistics.html">Logistics</a>
+            <a href="software.html">Software</a>
+            <a href="cargowise-ai.html">CargoWise AI</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">&copy; ViAGO Holdings Limited 2026. All rights reserved.</span>
+        <div class="footer-badge">
+            <img src="assets/cw-service-partner-badge.png" alt="CargoWise Service Partner">
         </div>
-    </section>
+    </div>
+</footer>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-left">
-                <strong>ViAGO</strong> &nbsp;&middot;&nbsp; Prepare your people. Prepare your operation.
-            </div>
-            <div class="footer-links">
-                <a href="logistics.html">Logistics</a>
-                <a href="software.html">Software</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-        </div>
-        <div class="footer-inner" style="margin-top: 1.25rem;">
-            <div class="footer-left">&copy; ViAGO Holdings Limited 2026. All rights reserved.</div>
-        </div>
-    </footer>
-
-    <script>
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-        reveals.forEach(el => observer.observe(el));
-    </script>
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
