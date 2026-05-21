@@ -56,17 +56,14 @@ nav {
     align-items: center;
     text-decoration: none;
     height: 72px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--cream);
+    letter-spacing: -0.01em;
 }
-
-.nav-logo img {
-    height: 40px;
-    width: auto;
-    display: block;
-    filter: brightness(0) invert(1);
-    transition: opacity 0.2s;
-}
-
-.nav-logo:hover img { opacity: 0.85; }
+.nav-logo span { color: var(--burnt-orange); }
 
 .nav-links { display: flex; align-items: center; gap: 2.25rem; }
 
