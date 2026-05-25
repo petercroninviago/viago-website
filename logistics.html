@@ -1,261 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logistics — ViAGO</title>
-    <meta name="description" content="ViAGO implements PAVE and trains CargoWise operators for the AI agent era. CargoWise Service Partner. Authors of the PAVE certification programme.">
-    <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works in CargoWise — ViAGO</title>
+<meta name="description" content="What freight forwarding operations look like when Automate, Delegate and Accelerate are all working together inside CargoWise.">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #0A1628;
+  --cream: #F4F1EA;
+  --orange: #E8751A;
+  --navy: #1E3A5F;
+  --soft-orange: #F4A261;
+  --ice: #CADCFC;
+  --white: #FFFFFF;
+  --muted: #6B7280;
+  --rule: #D9D4C7;
+  --max: 1200px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Calibri, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(202,220,252,0.07);
+  height: 68px;
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 2.5rem;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; text-decoration: none; height: 68px;
+}
+.nav-logo img {
+  height: 40px; width: auto; display: block;
+  filter: brightness(0) invert(1); opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover img { opacity: 1; }
+.nav-toggle {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 2px;
+  background: var(--ice); border-radius: 2px;
+}
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--ice); text-decoration: none;
+  opacity: 0.75; transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  background: var(--orange) !important;
+  color: var(--cream) !important;
+  padding: 0.5rem 1.4rem !important;
+  border-radius: 3px !important;
+  font-weight: 600 !important; font-size: 0.8rem !important;
+  text-transform: uppercase !important; letter-spacing: 0.04em !important;
+  opacity: 1 !important; transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--soft-orange) !important; }
+
+/* HERO */
+.hero {
+  background: var(--ink);
+  padding: 8.5rem 0 5.5rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(202,220,252,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(202,220,252,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.hero-content { max-width: 780px; position: relative; }
+
+/* EYEBROW */
+.eyebrow {
+  font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  margin-bottom: 1.1rem; display: block;
+}
+.eyebrow-orange { color: var(--orange); }
+.eyebrow-soft { color: var(--soft-orange); }
+
+/* HERO TYPE */
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700; font-style: italic;
+  color: var(--cream); line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.hero h1 em { color: var(--soft-orange); font-style: italic; }
+.hero-sub {
+  font-size: 1.05rem; font-weight: 400;
+  color: var(--ice);
+  line-height: 1.75; max-width: 620px;
+}
+
+/* SCENE SETTER */
+.scene-section {
+  background: var(--ink);
+  padding: 6rem 0;
+  border-left: 4px solid var(--orange);
+  position: relative;
+}
+.scene-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(202,220,252,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(202,220,252,0.015) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+/* STEP SECTIONS */
+.step-cream {
+  background: var(--cream);
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.step-ink {
+  background: var(--ink);
+  padding: 6rem 0;
+  border-left: 4px solid var(--orange);
+}
+
+/* STEP LABEL */
+.step-label {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.step-number {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--cream);
+  font-size: 0.85rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.step-name {
+  font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.18em;
+}
+.step-name-ink { color: var(--soft-orange); }
+.step-name-cream { color: var(--orange); }
+
+/* HEADINGS */
+h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+.on-cream h2 { color: var(--ink); }
+.on-ink h2 { color: var(--cream); }
+
+.step-body {
+  font-size: 1rem; font-weight: 400;
+  line-height: 1.75;
+  max-width: 700px; margin-bottom: 3rem;
+}
+.on-cream .step-body { color: var(--navy); }
+.on-ink .step-body { color: var(--ice); }
+
+/* THREE CARDS */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.feature-card {
+  border-radius: 4px;
+  padding: 1.75rem;
+  border-top: 3px solid var(--orange);
+}
+.card-cream { background: var(--white); }
+.card-ink {
+  background: rgba(202,220,252,0.04);
+  border: 1px solid rgba(202,220,252,0.1);
+  border-top: 3px solid var(--orange);
+}
+.feature-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+.card-cream h3 { color: var(--ink); }
+.card-ink h3 { color: var(--cream); }
+.feature-card p { font-size: 0.88rem; line-height: 1.7; font-weight: 400; }
+.card-cream p { color: var(--navy); }
+.card-ink p { color: var(--ice); }
+
+/* AGENT BADGE */
+.agent-badge {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  background: rgba(232,117,26,0.12);
+  border: 1px solid rgba(232,117,26,0.3);
+  border-radius: 3px;
+  padding: 0.4rem 1rem;
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--soft-orange);
+}
+
+/* FEATURES CALLOUT */
+.features-callout {
+  background: rgba(202,220,252,0.04);
+  border: 1px solid rgba(202,220,252,0.12);
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  margin-top: 3rem;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.features-callout p {
+  font-size: 0.92rem; color: var(--ice);
+  font-weight: 400; margin: 0;
+}
+.features-callout a {
+  font-size: 0.82rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--orange); text-decoration: none;
+  white-space: nowrap; transition: opacity 0.2s;
+}
+.features-callout a:hover { opacity: 0.75; }
+
+/* CERT STRIP */
+.cert-strip {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+  display: flex; align-items: center;
+  gap: 1rem; flex-wrap: wrap;
+}
+.cert-label {
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.cert-chip {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--navy); letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.cert-chip:hover { border-color: var(--orange); color: var(--orange); }
+
+/* CTA */
+.cta-section {
+  background: var(--ink);
+  padding: 6rem 0;
+  border-left: 4px solid var(--orange);
+  text-align: center;
+}
+.cta-section h2 { color: var(--cream); max-width: 560px; margin: 0 auto 1rem; }
+.cta-section p {
+  font-size: 0.97rem; font-weight: 400;
+  color: var(--ice);
+  max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.75;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--orange); color: var(--cream);
+  padding: 0.85rem 2rem; border-radius: 3px;
+  font-size: 0.85rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  text-decoration: none; transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--soft-orange); transform: translateY(-1px); }
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(202,220,252,0.06);
+  padding: 2.5rem 0;
+}
+.footer-inner {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-left { font-size: 0.78rem; color: var(--muted); }
+.footer-left strong {
+  font-family: Georgia, serif;
+  font-style: italic; color: var(--ice); opacity: 0.4;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.78rem; color: var(--muted);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--ice); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.ha { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+.ha1 { animation-delay: 0.05s; }
+.ha2 { animation-delay: 0.2s; }
+.ha3 { animation-delay: 0.35s; }
+
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; align-items: flex-start;
+    position: absolute; top: 68px; left: 0; right: 0;
+    background: var(--ink); padding: 1.5rem 2.5rem;
+    border-top: 1px solid rgba(202,220,252,0.08);
+    gap: 1.25rem;
+  }
+  .feature-grid { grid-template-columns: 1fr; }
+  .features-callout { flex-direction: column; }
+}
+</style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
-        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links">
-            <a href="logistics.html">Logistics</a>
-            <a href="software.html">Software</a>
-            <a href="about.html">About</a>
-            <a href="contact.html" class="nav-cta">Book a Call</a>
-        </div>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="logistics.html">Logistics</a>
+      <a href="software.html">Software</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
     </div>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero on-ink">
-    <div class="container">
-        <p class="eyebrow hero-anim hero-anim-d1">Logistics</p>
-        <h1 class="hero-anim hero-anim-d2">CargoWise operators are being trained for work that's about to disappear.</h1>
-        <p class="hero-sub hero-anim hero-anim-d3">The tasks agents will handle in 24 months are the tasks your people are getting good at today. ViAGO prepares the operation — and the people — for what comes next.</p>
-        <a href="contact.html" class="hero-cta hero-anim hero-anim-d4">Talk to us</a>
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow eyebrow-soft ha ha1">CargoWise &#183; Under the Hood</span>
+      <h1 class="ha ha2">The operation, <em>under the hood.</em></h1>
+      <p class="hero-sub ha ha3">What freight forwarding operations look like when Automate, Delegate and Accelerate are all working together inside CargoWise.</p>
     </div>
+  </div>
 </section>
 
-<!-- DOC 1 INFOGRAPHIC -->
-<section class="section-infographic on-ink">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">The Shift</p>
-            <h2>What your operation looks like in the agent era.</h2>
-            <p>Three layers of work. One thing changes when agents arrive: which layer your people spend most of their time in.</p>
-        </div>
-        <div class="diagram-scroll reveal">
-          <svg viewBox="0 0 1200 286" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PAVE task board showing three work types: Direct Work handled by agents, Scheduled Reviews at human checkpoints, and Escalations as the primary human workload — plus a variation risk chart showing PAVE surge buffering">
-            <rect width="1200" height="286" fill="#0A1628" rx="6"/>
-            <text x="16" y="20" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="2.5">PAVE TASK BOARD</text>
-            <text x="724" y="20" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="2.5">VARIATION RISK</text>
-            <line x1="710" y1="10" x2="710" y2="276" stroke="#F4F1EA" stroke-opacity="0.08" stroke-width="1"/>
-            <rect x="16" y="28" width="210" height="242" rx="5" fill="#F4F1EA" fill-opacity="0.03" stroke="#F4F1EA" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="5 4"/>
-            <text x="28" y="52" fill="#F4F1EA" fill-opacity="0.38" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="10" font-weight="700">DIRECT WORK</text>
-            <rect x="28" y="58" width="95" height="16" rx="8" fill="#E8751A" fill-opacity="0.12"/>
-            <text x="75" y="70" fill="#F4A261" fill-opacity="0.65" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" font-weight="700" text-anchor="middle">AGENT HANDLED</text>
-            <rect x="28" y="82" width="178" height="15" rx="3" fill="#F4F1EA" fill-opacity="0.04"/>
-            <text x="36" y="94" fill="#F4F1EA" fill-opacity="0.25" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">CI Parsing — 24 entries</text>
-            <rect x="28" y="101" width="178" height="15" rx="3" fill="#F4F1EA" fill-opacity="0.04"/>
-            <text x="36" y="113" fill="#F4F1EA" fill-opacity="0.25" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Classification — 18 tariffs</text>
-            <rect x="28" y="120" width="178" height="15" rx="3" fill="#F4F1EA" fill-opacity="0.04"/>
-            <text x="36" y="132" fill="#F4F1EA" fill-opacity="0.25" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">ComplianceWise — 31 checks</text>
-            <rect x="28" y="139" width="178" height="15" rx="3" fill="#F4F1EA" fill-opacity="0.04"/>
-            <text x="36" y="151" fill="#F4F1EA" fill-opacity="0.25" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Invoice matching — 12 entries</text>
-            <rect x="28" y="158" width="178" height="15" rx="3" fill="#F4F1EA" fill-opacity="0.04"/>
-            <text x="36" y="170" fill="#F4F1EA" fill-opacity="0.25" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Docs requested — 7 entries</text>
-            <rect x="244" y="28" width="210" height="242" rx="5" fill="#CADCFC" fill-opacity="0.05" stroke="#CADCFC" stroke-opacity="0.55" stroke-width="1.5"/>
-            <text x="256" y="52" fill="#CADCFC" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="10" font-weight="700">SCHEDULED REVIEWS</text>
-            <rect x="256" y="58" width="80" height="16" rx="8" fill="#CADCFC" fill-opacity="0.15"/>
-            <text x="296" y="70" fill="#CADCFC" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" font-weight="700" text-anchor="middle">CHECKPOINT</text>
-            <rect x="256" y="82" width="178" height="15" rx="3" fill="#CADCFC" fill-opacity="0.08"/>
-            <text x="264" y="94" fill="#CADCFC" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Customs Lodgement · 09:00</text>
-            <rect x="256" y="101" width="178" height="15" rx="3" fill="#CADCFC" fill-opacity="0.08"/>
-            <text x="264" y="113" fill="#CADCFC" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">ABF Assessment · 11:30</text>
-            <rect x="256" y="120" width="178" height="15" rx="3" fill="#CADCFC" fill-opacity="0.08"/>
-            <text x="264" y="132" fill="#CADCFC" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Billing Sign-off · 14:00</text>
-            <rect x="256" y="139" width="178" height="15" rx="3" fill="#CADCFC" fill-opacity="0.08"/>
-            <text x="264" y="151" fill="#CADCFC" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Permit Review · 15:30</text>
-            <rect x="472" y="28" width="210" height="242" rx="5" fill="#E8751A" fill-opacity="0.07" stroke="#E8751A" stroke-opacity="0.85" stroke-width="2"/>
-            <text x="484" y="52" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="10" font-weight="700">ESCALATIONS</text>
-            <rect x="484" y="58" width="128" height="16" rx="8" fill="#E8751A" fill-opacity="0.25"/>
-            <text x="548" y="70" fill="#E8751A" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" font-weight="700" text-anchor="middle">PRIMARY HUMAN WORK</text>
-            <rect x="484" y="82" width="178" height="15" rx="3" fill="#E8751A" fill-opacity="0.12"/>
-            <text x="492" y="94" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Tariff dispute — decision needed</text>
-            <rect x="484" y="101" width="178" height="15" rx="3" fill="#E8751A" fill-opacity="0.12"/>
-            <text x="492" y="113" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Permit exception — customs query</text>
-            <rect x="484" y="120" width="178" height="15" rx="3" fill="#E8751A" fill-opacity="0.12"/>
-            <text x="492" y="132" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Client SLA breach — review risk</text>
-            <rect x="484" y="139" width="178" height="15" rx="3" fill="#E8751A" fill-opacity="0.12"/>
-            <text x="492" y="151" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="9">Valuation query — ATO flag</text>
-            <rect x="484" y="196" width="178" height="54" rx="4" fill="#E8751A" fill-opacity="0.12"/>
-            <text x="494" y="215" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8.5" font-weight="700">When agents take BAU,</text>
-            <text x="494" y="229" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8.5" font-weight="700">escalations become the</text>
-            <text x="494" y="243" fill="#F4A261" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8.5" font-weight="700">primary human workload.</text>
-            <line x1="724" y1="248" x2="1185" y2="248" stroke="#F4F1EA" stroke-opacity="0.12" stroke-width="1"/>
-            <text x="724" y="55" fill="#F4F1EA" fill-opacity="0.35" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8">NORMAL CADENCE</text>
-            <rect x="728" y="188" width="22" height="60" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
-            <rect x="756" y="181" width="22" height="67" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
-            <rect x="784" y="185" width="22" height="63" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
-            <rect x="812" y="179" width="22" height="69" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
-            <rect x="840" y="186" width="22" height="62" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
-            <rect x="868" y="182" width="22" height="66" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
-            <rect x="896" y="187" width="22" height="61" rx="2" fill="#CADCFC" fill-opacity="0.22"/>
-            <text x="980" y="55" fill="#E8751A" fill-opacity="0.9" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" font-weight="700">SURGE</text>
-            <rect x="932" y="160" width="22" height="88" rx="2" fill="#E8751A" fill-opacity="0.40"/>
-            <rect x="960" y="130" width="22" height="118" rx="2" fill="#E8751A" fill-opacity="0.55"/>
-            <rect x="988" y="98" width="22" height="150" rx="2" fill="#E8751A" fill-opacity="0.70"/>
-            <rect x="1016" y="112" width="22" height="136" rx="2" fill="#E8751A" fill-opacity="0.60"/>
-            <rect x="1044" y="142" width="22" height="106" rx="2" fill="#E8751A" fill-opacity="0.45"/>
-            <line x1="920" y1="168" x2="1082" y2="168" stroke="#F4A261" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="5 3"/>
-            <text x="1086" y="172" fill="#F4A261" fill-opacity="0.65" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8" font-weight="700">PAVE BUFFER</text>
-            <text x="724" y="270" fill="#F4F1EA" fill-opacity="0.22" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="8">Volume spikes absorbed by PAVE buffers — operators see priority, not chaos</text>
-          </svg>
-        </div>
-        <a href="cargowise-ai.html" class="inline-link reveal">See how this works inside CargoWise One →</a>
+<!-- SCENE SETTER -->
+<section class="scene-section on-ink">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow eyebrow-soft">The Future of Freight Forwarding Operations</span>
+      <h2>Three types of work. Very different demands on your people.</h2>
+      <p class="step-body">In a well-configured CargoWise operation, work splits into three distinct streams. Agents handle the predictable, high-volume, low-complexity tasks: document processing, compliance screening, tariff classification, without an operator touching them. Scheduled reviews happen at defined checkpoints: customs lodgement, billing sign-off, anything with statutory or financial weight. And then there are escalations — unexpected exceptions that agents could not resolve, surfaced to a human who needs to make a fast, informed decision. That last category is where your operation either holds together or falls apart.</p>
     </div>
+  </div>
 </section>
 
-<!-- ADA IN CARGOWISE CONTEXT -->
-<section class="section-cream">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">How It Works</p>
-            <h2>Automate. Delegate. Accelerate. All three happen inside CargoWise One.</h2>
-            <p class="section-intro">Each stage is a configuration problem before it's a training problem. ViAGO does both.</p>
-        </div>
-        <div class="steps-grid">
-            <div class="step reveal">
-                <p class="step-number">Step 1</p>
-                <h3>Automate</h3>
-                <p>Configure milestones, tasks, and triggers in CargoWise so agents have a clean system to work with. Messy configuration means agents create new problems faster than they solve old ones.</p>
-            </div>
-            <div class="step reveal">
-                <p class="step-number">Step 2</p>
-                <h3>Delegate</h3>
-                <p>Commercial Invoice Parsing, ComplianceWise, and Classification Assistant handle the document processing and compliance checks. Humans touch the shipment only at statutory checkpoints.</p>
-            </div>
-            <div class="step reveal">
-                <p class="step-number">Step 3</p>
-                <h3>Accelerate</h3>
-                <p>PAVE surfaces the work that needs human attention — scheduled reviews and escalations — and buffers your team against surge. When volumes spike, operators see what matters first.</p>
-            </div>
-        </div>
+<!-- STEP 1: AUTOMATE -->
+<section class="step-cream on-cream">
+  <div class="container">
+    <div class="reveal">
+      <div class="step-label">
+        <div class="step-number">1</div>
+        <span class="step-name step-name-cream">Automate</span>
+      </div>
+      <h2>Get the workflow right before anything else.</h2>
+      <p class="step-body">CargoWise's workflow engine maps every job type as milestones, tasks and triggers. When this is configured properly against your SOPs, every step of every shipment runs consistently. Milestones and tasks make the process clear and followable. Triggers handle the automation layer: status updates sent, documents requested, notifications fired, without anyone having to drive it manually. When the configuration is not there yet, AI agents amplify the problems rather than solve them. This is where ViAGO lays the groundwork.</p>
     </div>
+    <div class="feature-grid">
+      <div class="feature-card card-cream reveal">
+        <h3>Milestones</h3>
+        <p>The defined stages every job moves through. Origin, docs received, customs lodged, cleared, delivered, billed. Every job type has its own milestone sequence, configured to match your SOPs.</p>
+      </div>
+      <div class="feature-card card-cream reveal">
+        <h3>Tasks</h3>
+        <p>The work items attached to each milestone. Who does what, in what order, before the job can progress. Tasks make the work visible and assignable without anyone having to ask what comes next.</p>
+      </div>
+      <div class="feature-card card-cream reveal">
+        <h3>Triggers</h3>
+        <p>The automation layer. When an event fires in CargoWise — a milestone completed, a document received, a deadline hit — triggers send notifications, generate documents and route tasks automatically. Day or night.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PAVE -->
-<section class="section-ink on-ink">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">PAVE</p>
-            <h2>The workflow visualisation tool built into CargoWise. We wrote its certification.</h2>
-            <p>PAVE makes work visible. It surfaces the constraint, smooths the flow, and tells your operators what to work on next — not what they feel like working on.</p>
-            <p>ViAGO was engaged by WiseTech Global to write the PAVE certification programme, now available in WiseTech Academy. We don't just implement PAVE. We define what good looks like.</p>
-            <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" class="badge-logo" style="opacity: 0.75;">
-        </div>
+<!-- STEP 2: DELEGATE -->
+<section class="step-ink on-ink">
+  <div class="container">
+    <div class="reveal">
+      <div class="step-label">
+        <div class="step-number">2</div>
+        <span class="step-name step-name-ink">Delegate</span>
+      </div>
+      <h2>Hand the routine work to agents.</h2>
+      <p class="step-body">Once the operational process is dialled in, AI agents are ready to take on the high-touch, high-volume, low-complexity work. Document processing, compliance screening, tariff classification — handled without an operator touching them. The agents that do this are built into CargoWise today. Getting them ready to perform requires the workflow foundation from Step 1 to already be in place.</p>
+      <div class="agent-badge">Available today &#183; CargoWise Value Pack</div>
     </div>
+    <div class="feature-grid">
+      <div class="feature-card card-ink reveal">
+        <h3>Commercial Invoice Parsing</h3>
+        <p>Reads commercial invoices and extracts line-item data directly into the job. Eliminates manual keying on one of the highest-volume, most error-prone tasks in a forwarding operation.</p>
+      </div>
+      <div class="feature-card card-ink reveal">
+        <h3>ComplianceWise</h3>
+        <p>Screens parties, commodities and countries against trade sanctions and restricted party lists. Flags shipments that need human review before goods move across borders.</p>
+      </div>
+      <div class="feature-card card-ink reveal">
+        <h3>Classification Assistant</h3>
+        <p>Suggests HS codes based on cargo description and origin. Human confirms at lodgement. Statutory responsibility stays with the broker.</p>
+      </div>
+    </div>
+    <div class="features-callout reveal">
+      <p>Keep up with what CargoWise AI can do today. We update this page as WiseTech ships new features.</p>
+      <a href="cargowise-ai.html">Current CargoWise AI Features &#8594;</a>
+    </div>
+  </div>
 </section>
 
-<!-- BBIT -->
-<section class="section-cream">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">Black Belt in Thinking</p>
-            <h2>The thinking skills for the job that's actually coming.</h2>
-            <p>Every stage of the agent era makes higher demands on human judgement. Automating requires people who understand their own workflows. Delegating requires people who know when an agent has got it wrong and why. Managing an AI team requires rapid cause-and-effect reasoning under pressure.</p>
-            <p>These are trainable skills. BBIT is that training — the same thinking discipline PAVE itself is built on.</p>
-            <a href="https://blackbeltinthinking.com" class="inline-link" target="_blank" rel="noopener">Learn about BBIT →</a>
-        </div>
+<!-- STEP 3: ACCELERATE -->
+<section class="step-cream on-cream">
+  <div class="container">
+    <div class="reveal">
+      <div class="step-label">
+        <div class="step-number">3</div>
+        <span class="step-name step-name-cream">Accelerate</span>
+      </div>
+      <h2>PAVE manages what is left — the work that needs a human.</h2>
+      <p class="step-body">When agents handle the routine, human work changes. Reviews and escalations become the whole job. Volume is unpredictable, priorities shift fast, and the pressure to act on the right thing at the right time is higher than ever. PAVE gives operators a real-time view of every job's status, priority and buffer position, including current task load against available capacity. They always know what deserves their attention next. Managers see risk before it becomes a service failure.</p>
     </div>
-</section>
-
-<!-- CASE STUDIES -->
-<section class="section-cream" style="padding-top: 0; border-top: 1px solid var(--rule);">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">Case Studies</p>
-            <h2>Freight forwarders who've done this with us.</h2>
-        </div>
-        <div class="cs-cards">
-            <div class="cs-card reveal">
-                <img src="assets/mainfreight-logo.png" alt="Mainfreight" class="cs-card-logo">
-                <p>240+ branches globally. Implemented CargoWise productivity tools to smooth workloads and eliminate peaks and troughs. All five key KPIs improved substantially.</p>
-                <a href="case-study-mainfreight.html" class="inline-link">Read more →</a>
-            </div>
-            <div class="cs-card reveal">
-                <span class="cs-card-logo-text">Navia</span>
-                <p>Implemented CargoWise productivity tools and BBIT across the business. Pain points substantially reduced.</p>
-                <a href="case-study-navia.html" class="inline-link">Read more →</a>
-            </div>
-            <div class="cs-card reveal">
-                <span class="cs-card-logo-text">I.H. Hunter</span>
-                <p>Watch the story of how I.H. Hunter transformed their operations with CargoWise productivity tools.</p>
-                <a href="case-study-ih-hunter.html" class="inline-link">Watch the story →</a>
-            </div>
-        </div>
+    <div class="feature-grid">
+      <div class="feature-card card-cream reveal">
+        <h3>Visual Boards</h3>
+        <p>Real-time view of every job's status and priority. The primary operator interface. Operators stop guessing what to work on next. The board tells them, based on where the system needs them most.</p>
+      </div>
+      <div class="feature-card card-cream reveal">
+        <h3>Buffer Management</h3>
+        <p>Governs when work is released and sequenced through operations. Green, amber and red zones surface risk early — when there is still time to act, not after the damage is done.</p>
+      </div>
+      <div class="feature-card card-cream reveal">
+        <h3>Performance Measurement</h3>
+        <p>KPI dashboards give managers a factual view of system health. Throughput, flow rates, exception patterns. The data to improve the operation systematically, not by instinct.</p>
+      </div>
     </div>
-</section>
-
-<!-- CARGOWISE AI CTA CARD -->
-<section class="section-ink on-ink">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">Go Deeper</p>
-            <h2>What AI features are actually available in CargoWise today.</h2>
-            <p>Commercial Invoice Parsing. ComplianceWise. Classification Assistant. All live in the CargoWise Value Pack. Here's what they do, what they don't do, and where ViAGO fits.</p>
-            <div class="cta-card" style="margin-top: 2rem;">
-                <h3>What's actually available in CargoWise today — and what it takes to use it properly.</h3>
-                <p>Most firms have the Value Pack AI features turned on. Almost none have the workflow configuration to make them work.</p>
-                <a href="cargowise-ai.html" class="hero-cta">See the CargoWise AI overview →</a>
-            </div>
-        </div>
+    <div class="cert-strip reveal">
+      <span class="cert-label">PAVE Certification</span>
+      <a href="contact.html" class="cert-chip">PCO &#8212; Certified Operator</a>
+      <a href="contact.html" class="cert-chip">PCS &#8212; Certified Specialist</a>
+      <a href="contact.html" class="cert-chip">PCP &#8212; Certified Professional</a>
     </div>
+  </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section on-ink">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">Don't Wait</p>
-            <h2>The window is open. It won't stay open.</h2>
-            <p>Agent-driven operations are 12 to 24 months from being table-stakes. Training a workforce in systems thinking takes 6 to 12 months to land properly. Firms that start now have a shot at being ready. Firms that wait will try to retrofit under pressure and discover they can't.</p>
-            <a href="contact.html" class="hero-cta">Book a Call</a>
-        </div>
-    </div>
+<section class="cta-section">
+  <div class="container">
+    <span class="eyebrow eyebrow-soft" style="display:block;margin-bottom:1rem;">Get Started</span>
+    <h2>Want to know if your CargoWise setup is ready for this?</h2>
+    <p>We assess your current workflow configuration, map it against the three steps, and tell you exactly what needs to change before AI agents can do their job properly.</p>
+    <a href="contact.html" class="btn-primary">Book an AI Readiness Assessment &#8594;</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <div class="footer-top">
-        <div>
-            <span class="footer-brand">ViAGO</span>
-            <span class="footer-tagline">Prepare your people. Prepare your operation.</span>
-        </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="logistics.html">Logistics</a>
-            <a href="software.html">Software</a>
-            <a href="cargowise-ai.html">CargoWise AI</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>ViAGO</strong> &nbsp;&#183;&nbsp; Prepare your people. Prepare your operation.
+      </div>
+      <div class="footer-links">
+        <a href="logistics.html">Logistics</a>
+        <a href="software.html">Software</a>
+        <a href="cargowise-ai.html">CargoWise AI</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
-    <div class="footer-bottom">
-        <span class="footer-copy">&copy; ViAGO Holdings Limited 2026. All rights reserved.</span>
-        <div class="footer-badge">
-            <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner">
-        </div>
+    <div class="footer-inner" style="margin-top:1rem">
+      <div class="footer-left">&copy; ViAGO Holdings Limited 2026. All rights reserved.</div>
+      <div>
+        <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" style="height:36px;width:auto;opacity:0.65;display:block;">
+      </div>
     </div>
+  </div>
 </footer>
 
 <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
