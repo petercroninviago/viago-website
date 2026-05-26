@@ -1,162 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — ViAGO</title>
-    <meta name="description" content="ViAGO — Theory of Constraints specialists since 1995. Co-creators of PAVE. Authors of the CargoWise PAVE certification. Based in Sydney, Australia.">
-    <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — ViAGO</title>
+<meta name="description" content="ViAGO has spent 30+ years helping businesses think better and run smoother operations. CargoWise Service Partner. Co-developers of PAVE. Authors of the PAVE certification programme.">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #0A1628;
+  --cream: #F4F1EA;
+  --orange: #E8751A;
+  --navy: #1E3A5F;
+  --soft-orange: #F4A261;
+  --ice: #CADCFC;
+  --white: #FFFFFF;
+  --muted: #6B7280;
+  --rule: #D9D4C7;
+  --max: 1200px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Calibri, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(202,220,252,0.07);
+  height: 68px;
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 2.5rem;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; text-decoration: none; height: 68px;
+}
+.nav-logo img {
+  height: 40px; width: auto; display: block;
+  filter: brightness(0) invert(1); opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover img { opacity: 1; }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--ice); text-decoration: none;
+  opacity: 0.75; transition: opacity 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { opacity: 1; }
+.nav-cta {
+  background: var(--orange) !important;
+  color: var(--cream) !important;
+  padding: 0.5rem 1.4rem !important;
+  border-radius: 3px !important;
+  font-weight: 600 !important; font-size: 0.8rem !important;
+  text-transform: uppercase !important; letter-spacing: 0.04em !important;
+  opacity: 1 !important; transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--soft-orange) !important; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ice); margin: 5px 0; }
+@media (max-width: 900px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; background: var(--ink); padding: 1.5rem 2.5rem 2rem; gap: 1.25rem; border-bottom: 1px solid rgba(202,220,252,0.08); }
+  .nav-links.open { display: flex; }
+}
+
+/* HERO */
+.hero {
+  background: var(--ink);
+  padding: 8.5rem 0 5.5rem;
+  position: relative; overflow: hidden;
+  border-left: 4px solid var(--orange);
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(202,220,252,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(202,220,252,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.hero-content { max-width: 780px; position: relative; }
+.eyebrow {
+  font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  margin-bottom: 1.1rem; display: block;
+}
+.eyebrow-soft { color: var(--soft-orange); }
+.eyebrow-orange { color: var(--orange); }
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700; font-style: italic;
+  color: var(--cream); line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.hero-sub {
+  font-size: 1.05rem; font-weight: 400;
+  color: var(--ice); line-height: 1.75;
+  max-width: 640px;
+}
+
+/* SECTIONS */
+.section-cream {
+  background: var(--cream);
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.section-ink {
+  background: var(--ink);
+  padding: 6rem 0;
+  border-left: 4px solid var(--orange);
+}
+h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.2; color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+.section-ink h2 { color: var(--cream); }
+.body-text {
+  font-size: 1rem; font-weight: 400;
+  color: var(--navy); line-height: 1.75;
+  max-width: 680px; margin-bottom: 1.25rem;
+}
+.body-text:last-of-type { margin-bottom: 0; }
+.section-ink .body-text { color: var(--ice); }
+
+/* CREDENTIAL STRIP */
+.credential-strip {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.credential-item h4 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 1.1rem; color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.credential-item p {
+  font-size: 0.88rem; font-weight: 400;
+  color: var(--muted); line-height: 1.6;
+  margin: 0;
+}
+
+/* VALUES GRID */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.value-card {
+  background: rgba(202,220,252,0.05);
+  border: 1px solid rgba(202,220,252,0.1);
+  border-top: 3px solid var(--orange);
+  border-radius: 4px;
+  padding: 1.75rem;
+}
+.value-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 1.1rem; color: var(--cream);
+  margin-bottom: 0.6rem;
+}
+.value-card p {
+  font-size: 0.88rem; font-weight: 400;
+  color: var(--ice); line-height: 1.7;
+}
+
+/* TEAM GRID */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.team-card { text-align: left; }
+.team-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  filter: grayscale(20%);
+}
+.team-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 1.05rem; color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+.team-role {
+  font-size: 0.82rem; font-weight: 500;
+  color: var(--muted); letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+.linkedin-link {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.75rem; font-weight: 500;
+  color: var(--muted); text-decoration: none;
+  opacity: 0.6; transition: opacity 0.2s, color 0.2s;
+}
+.linkedin-link:hover { opacity: 1; color: #0077b5; }
+.linkedin-icon { width: 14px; height: 14px; display: inline-block; }
+
+/* BBIT SECTION */
+.bbit-section {
+  background: var(--white);
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.bbit-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.bbit-inner h2 { color: var(--ink); }
+.bbit-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--orange); text-decoration: none;
+  transition: gap 0.2s;
+}
+.bbit-link:hover { gap: 0.75rem; }
+.bbit-quote {
+  background: var(--cream);
+  border-radius: 4px;
+  border-left: 4px solid var(--orange);
+  padding: 2rem 2.25rem;
+}
+.bbit-quote blockquote {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 1.15rem; color: var(--ink);
+  line-height: 1.55; margin-bottom: 1rem;
+}
+.bbit-quote cite {
+  font-size: 0.82rem; font-weight: 500;
+  color: var(--muted); font-style: normal;
+}
+
+/* PARTNER BADGES */
+.badges-section {
+  background: var(--cream);
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.badges-inner {
+  display: flex; align-items: center;
+  gap: 3rem; flex-wrap: wrap;
+}
+.badges-label {
+  font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--muted); flex-shrink: 0;
+}
+.badge-img { height: 40px; width: auto; opacity: 0.75; }
+
+/* CTA */
+.cta-section {
+  background: var(--ink);
+  padding: 6rem 0;
+  border-left: 4px solid var(--orange);
+  text-align: center;
+}
+.cta-section h2 { color: var(--cream); max-width: 560px; margin: 0 auto 1rem; }
+.cta-section p {
+  font-size: 0.97rem; font-weight: 400;
+  color: var(--ice);
+  max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.75;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--orange); color: var(--cream);
+  padding: 0.85rem 2rem; border-radius: 3px;
+  font-size: 0.85rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  text-decoration: none; transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--soft-orange); transform: translateY(-1px); }
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(202,220,252,0.06);
+  padding: 2.5rem 0;
+}
+.footer-inner {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-left { font-size: 0.78rem; color: var(--muted); }
+.footer-left strong { font-family: Georgia, serif; font-style: italic; color: var(--ice); opacity: 0.4; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--ice); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.ha { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+.ha1 { animation-delay: 0.05s; }
+.ha2 { animation-delay: 0.2s; }
+.ha3 { animation-delay: 0.35s; }
+
+@media (max-width: 900px) {
+  .credential-strip { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .bbit-inner { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 600px) {
+  .team-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
-        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links">
-            <a href="logistics.html">Logistics</a>
-            <a href="software.html">Software</a>
-            <a href="about.html">About</a>
-            <a href="contact.html" class="nav-cta">Book a Call</a>
-        </div>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="logistics.html">CargoWise</a>
+      <a href="services.html">Services</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
     </div>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero on-ink">
-    <div class="container">
-        <p class="eyebrow hero-anim hero-anim-d1">About ViAGO</p>
-        <h1 class="hero-anim hero-anim-d2">We've been doing this since 1995. The agent era is why it matters now.</h1>
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow eyebrow-soft ha ha1">About ViAGO</span>
+      <h1 class="ha ha2">30 years helping operations run better. The agent era is why it matters now.</h1>
+      <p class="hero-sub ha ha3">ViAGO is a specialist consultancy built on the Theory of Constraints. We help freight forwarders and customs brokers get more from their CargoWise investment, run smoother operations, and prepare their people for whatever comes next.</p>
     </div>
+  </div>
 </section>
 
-<!-- MISSION -->
+<!-- WHAT WE DO -->
 <section class="section-cream">
-    <div class="container">
-        <div class="reveal">
-            <h2>Flow specialists. Not generalists with an AI slide deck.</h2>
-            <p>ViAGO was built around one discipline: Theory of Constraints. We've spent 30 years understanding how work flows through complex systems, where it gets stuck, and how to fix the system rather than the symptoms.</p>
-            <p>We apply that discipline to logistics operations through CargoWise and PAVE, and to software teams through PACE. The agent era doesn't change the discipline. It makes it more urgent.</p>
-        </div>
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow eyebrow-orange">What We Do</span>
+      <h2>We don't teach people to do their job better. We change how they think about the job.</h2>
+      <p class="body-text">We create whole-system alignment, improve inter-team communication, and give everyone a common language for decision making and problem solving that controls risk and supports growth.</p>
+      <p class="body-text">We deliver this by visualising problems and solutions in cause and effect. Simplifying seemingly complex business challenges, and sorting the facts from the noise. That is how you ensure your people are, at any point, making the right decisions and working on the things that will deliver the greatest possible return.</p>
+      <p class="body-text">For over 30 years, we have trained business owners, managers, leaders, and operational staff in logical thinking processes and leadership skills across almost every industry imaginable. Combining training experience with a project approach, we implement reliable change in teams and people.</p>
     </div>
+    <div class="credential-strip reveal">
+      <div class="credential-item">
+        <h4>Co-developed PAVE</h4>
+        <p>We worked with WiseTech Global to build the tool that now runs freight forwarding operations in over 180 countries.</p>
+      </div>
+      <div class="credential-item">
+        <h4>Authors of the PAVE Certification</h4>
+        <p>PCO, PCS and PCP. We define what good looks like for PAVE. Every other Service Partner is measured against our standard.</p>
+      </div>
+      <div class="credential-item">
+        <h4>CargoWise Service Partner</h4>
+        <p>Workflow AI and PAVE specialists. Deep CargoWise configuration experience alongside 30+ years of TOC practice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section-ink reveal">
+  <div class="container">
+    <span class="eyebrow eyebrow-soft">How We Work</span>
+    <h2>What drives us.</h2>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <h3>Passionate about business</h3>
+        <p>We love business, we love performance, and we love freedom. A business on autopilot sets you free. And a business on autopilot needs good systems.</p>
+      </div>
+      <div class="value-card reveal">
+        <h3>High standards</h3>
+        <p>We prioritise mission, team, then individual. If anything does not meet our collective high expectations, the team swarms in to make good. Client mission under threat? All hands on deck.</p>
+      </div>
+      <div class="value-card reveal">
+        <h3>Success-oriented</h3>
+        <p>When things do not go to plan, we get persistent and we get creative. Those are two words our clients often use to describe us. We do not give up. We like to win and we like you to win.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- TEAM -->
-<section class="section-cream" style="padding-top: 0; border-top: 1px solid var(--rule);">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">The Team</p>
-            <h2>The people behind the work.</h2>
-        </div>
-        <div class="team-photo-layout reveal">
-            <figure>
-                <img src="assets/peter-cronin_med.png" alt="Peter Cronin, Managing Director">
-                <figcaption class="team-photo-caption">Peter Cronin, Managing Director</figcaption>
-            </figure>
-            <div>
-                <p>30 years in Theory of Constraints practice. Co-created PAVE with WiseTech Global. Author of the CargoWise PAVE certification programme.</p>
-                <p>Peter founded ViAGO in 1995 with a single focus: applying TOC to make operations run better. That focus hasn't changed. The context has.</p>
-            </div>
-        </div>
-
-        <!-- TODO: Add team photos here -->
-        <div style="margin-top: 2rem;">
-            <div class="team-placeholder reveal">
-                <span>Photo coming soon</span>
-            </div>
-        </div>
+<section class="section-cream">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow eyebrow-orange">The Team</span>
+      <h2>The people behind the work.</h2>
     </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <img src="assets/peter-cronin_sml.png" alt="Peter Cronin" class="team-photo">
+        <h3>Peter Cronin</h3>
+        <p class="team-role">CEO &amp; Head Instructor</p>
+        <a href="https://www.linkedin.com/in/petercronin/" target="_blank" rel="noopener" class="linkedin-link">
+          <svg class="linkedin-icon" viewBox="0 0 24 24" fill="#0077b5" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="team-card reveal">
+        <img src="assets/ben-gorringe_sml.png" alt="Ben Gorringe" class="team-photo">
+        <h3>Ben Gorringe</h3>
+        <p class="team-role">Head Product Manager</p>
+        <a href="https://www.linkedin.com/in/ben-gorringe-a5653035/" target="_blank" rel="noopener" class="linkedin-link">
+          <svg class="linkedin-icon" viewBox="0 0 24 24" fill="#0077b5" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="team-card reveal">
+        <img src="assets/peter-thorby_sml.png" alt="Peter Thorby" class="team-photo">
+        <h3>Peter Thorby</h3>
+        <p class="team-role">Finance Director</p>
+        <a href="https://www.linkedin.com/in/peter-thorby-3379169/" target="_blank" rel="noopener" class="linkedin-link">
+          <svg class="linkedin-icon" viewBox="0 0 24 24" fill="#0077b5" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="team-card reveal">
+        <img src="assets/bryce-england_sml.png" alt="Bryce England" class="team-photo">
+        <h3>Bryce England</h3>
+        <p class="team-role">Director &amp; Head of Content</p>
+        <a href="https://www.linkedin.com/in/bryce-england-5818111b/" target="_blank" rel="noopener" class="linkedin-link">
+          <svg class="linkedin-icon" viewBox="0 0 24 24" fill="#0077b5" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- CREDENTIALS -->
-<section class="section-ink on-ink">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">Why ViAGO</p>
-            <h2>Four things no other CargoWise partner has in combination.</h2>
-        </div>
-        <div class="cred-grid reveal">
-            <div class="cred-card">
-                <h3>30+ years TOC practice</h3>
-                <p>Theory of Constraints in logistics operations since 1995. Not a recent pivot to AI — the same discipline applied to a new context.</p>
-            </div>
-            <div class="cred-card">
-                <h3>CargoWise Service Partner</h3>
-                <p>Certified partner. Deep specialism in PAVE configuration and workflow optimisation across freight forwarding and customs brokerage.</p>
-                <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" style="max-height: 28px; margin-top: 1rem; opacity: 0.75;">
-            </div>
-            <div class="cred-card">
-                <h3>Authors of the PAVE Certification</h3>
-                <p>Engaged by WiseTech Global to write the PAVE certification programme, now available in WiseTech Academy. We define what good looks like.</p>
-            </div>
-            <div class="cred-card">
-                <h3>Black Belt in Thinking</h3>
-                <p>Owners of BBIT — the thinking-skills programme deployed across WiseTech and major freight operations globally. <a href="https://blackbeltinthinking.com" target="_blank" rel="noopener">blackbeltinthinking.com</a></p>
-            </div>
-        </div>
+<!-- BBIT -->
+<section class="bbit-section">
+  <div class="container">
+    <div class="bbit-inner reveal">
+      <div>
+        <span class="eyebrow eyebrow-orange">Black Belt in Thinking</span>
+        <h2>The thinking-skills programme behind everything we do.</h2>
+        <p class="body-text">BBIT is ViAGO's productised TOC thinking-skills programme. It trains operators, team leaders and managers in the cause-and-effect reasoning skills that make humans effective at every stage of the Automate, Delegate, Accelerate journey. The same discipline PAVE is built on.</p>
+        <p class="body-text">BBIT has been deployed across some of the largest freight operations in the world. It is not a standalone personal development course. It is the prerequisite for the rest of the operation working as designed.</p>
+        <a href="https://blackbeltinthinking.com" target="_blank" rel="noopener" class="bbit-link">Visit blackbeltinthinking.com &#8594;</a>
+      </div>
+      <div class="bbit-quote">
+        <blockquote>"Filter incoming information 10x quicker than I could do beforehand."</blockquote>
+        <cite>BBIT participant, logistics operations</cite>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- PARTNER BADGES -->
-<section class="section-cream">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">Credentials</p>
-            <div class="badge-strip">
-                <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner">
-                <img src="assets/wisetech-logo.png" alt="WiseTech Global" style="max-height: 32px; filter: grayscale(100%) opacity(50%);">
-            </div>
-        </div>
+<section class="badges-section reveal">
+  <div class="container">
+    <div class="badges-inner">
+      <span class="badges-label">Credentials</span>
+      <img src="assets/cw-badge-blue.png" alt="CargoWise Service Partner" class="badge-img">
     </div>
+  </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section on-ink">
-    <div class="container">
-        <div class="reveal">
-            <p class="eyebrow">Don't Wait</p>
-            <h2>The window is open. It won't stay open.</h2>
-            <p>Agent-driven operations are 12 to 24 months from being table-stakes. Training a workforce in systems thinking takes 6 to 12 months to land properly. Firms that start now have a shot at being ready. Firms that wait will try to retrofit under pressure and discover they can't.</p>
-            <a href="contact.html" class="hero-cta">Book a Call</a>
-        </div>
-    </div>
+<section class="cta-section reveal">
+  <div class="container">
+    <span class="eyebrow eyebrow-soft" style="display:block;margin-bottom:1rem;">Get in Touch</span>
+    <h2>Ready to talk about your operation?</h2>
+    <p>Find out how ViAGO can help your team deliver better, run smoother, and get ahead of whatever comes next.</p>
+    <a href="contact.html" class="btn-primary">Book a Call &#8594;</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <div class="footer-top">
-        <div>
-            <span class="footer-brand">ViAGO</span>
-            <span class="footer-tagline">Prepare your people. Prepare your operation.</span>
-        </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="logistics.html">Logistics</a>
-            <a href="software.html">Software</a>
-            <a href="cargowise-ai.html">CargoWise AI</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>ViAGO</strong> &nbsp;&#183;&nbsp; Prepare your people. Prepare your operation.
+      </div>
+      <div class="footer-links">
+        <a href="logistics.html">CargoWise</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
-    <div class="footer-bottom">
-        <span class="footer-copy">&copy; ViAGO Holdings Limited 2026. All rights reserved.</span>
-        <div class="footer-badge">
-            <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner">
-        </div>
+    <div class="footer-inner" style="margin-top:1rem">
+      <div class="footer-left">&copy; ViAGO Holdings Limited 2026. All rights reserved.</div>
+      <div>
+        <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" style="height:36px;width:auto;opacity:0.65;display:block;">
+      </div>
     </div>
+  </div>
 </footer>
 
 <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+  document.querySelector('.nav-links').classList.toggle('open');
+});
 </script>
-
 </body>
 </html>

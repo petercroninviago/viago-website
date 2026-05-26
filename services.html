@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — ViAGO</title>
+<meta name="description" content="ViAGO services for freight forwarders and customs brokers on CargoWise. Workflow configuration, PAVE implementation, consulting and support, and training.">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #0A1628;
+  --cream: #F4F1EA;
+  --orange: #E8751A;
+  --navy: #1E3A5F;
+  --soft-orange: #F4A261;
+  --ice: #CADCFC;
+  --white: #FFFFFF;
+  --muted: #6B7280;
+  --rule: #D9D4C7;
+  --max: 1200px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Calibri, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(202,220,252,0.07);
+  height: 68px;
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 2.5rem;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; text-decoration: none; height: 68px;
+}
+.nav-logo img {
+  height: 40px; width: auto; display: block;
+  filter: brightness(0) invert(1); opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover img { opacity: 1; }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--ice); text-decoration: none;
+  opacity: 0.75; transition: opacity 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { opacity: 1; }
+.nav-cta {
+  background: var(--orange) !important;
+  color: var(--cream) !important;
+  padding: 0.5rem 1.4rem !important;
+  border-radius: 3px !important;
+  font-weight: 600 !important; font-size: 0.8rem !important;
+  text-transform: uppercase !important; letter-spacing: 0.04em !important;
+  opacity: 1 !important; transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--soft-orange) !important; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ice); margin: 5px 0; }
+@media (max-width: 900px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; background: var(--ink); padding: 1.5rem 2.5rem 2rem; gap: 1.25rem; border-bottom: 1px solid rgba(202,220,252,0.08); }
+  .nav-links.open { display: flex; }
+}
+
+/* HERO */
+.hero {
+  background: var(--ink);
+  padding: 8.5rem 0 5.5rem;
+  position: relative; overflow: hidden;
+  border-left: 4px solid var(--orange);
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(202,220,252,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(202,220,252,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.hero-content { max-width: 680px; position: relative; }
+
+.eyebrow {
+  font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  margin-bottom: 1.1rem; display: block;
+}
+.eyebrow-soft { color: var(--soft-orange); }
+.eyebrow-orange { color: var(--orange); }
+
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 700; font-style: italic;
+  color: var(--cream); line-height: 1.18;
+  margin-bottom: 1.25rem;
+}
+.hero-sub {
+  font-size: 1rem; font-weight: 400;
+  color: var(--ice); line-height: 1.75;
+}
+
+/* ASSESSMENT BAND */
+.assessment-band {
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+  padding: 4rem 0;
+}
+.assessment-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem; align-items: center;
+}
+.assessment-inner h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  line-height: 1.2; color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.assessment-inner p {
+  font-size: 0.97rem; font-weight: 400;
+  color: var(--navy); line-height: 1.75;
+  max-width: 580px; margin: 0;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--orange); color: var(--cream);
+  padding: 0.85rem 2rem; border-radius: 3px;
+  font-size: 0.85rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  text-decoration: none; white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--soft-orange); transform: translateY(-1px); }
+
+/* SECTIONS */
+.section-cream {
+  background: var(--cream);
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.section-ink {
+  background: var(--ink);
+  padding: 6rem 0;
+  border-left: 4px solid var(--orange);
+}
+.section-white {
+  background: var(--white);
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  line-height: 1.2; color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.section-ink h2 { color: var(--cream); }
+
+.section-lead {
+  font-size: 0.92rem; font-weight: 400;
+  color: var(--muted); margin-bottom: 3rem;
+}
+.section-ink .section-lead { color: var(--ice); opacity: 0.65; }
+
+/* SERVICE CARDS - 2 col */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* SERVICE CARDS - 3 col */
+.service-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.service-card {
+  border-radius: 4px;
+  padding: 2.25rem;
+  border-top: 3px solid var(--orange);
+}
+.card-white { background: var(--white); }
+.card-cream {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--orange);
+}
+.card-ink {
+  background: rgba(202,220,252,0.04);
+  border: 1px solid rgba(202,220,252,0.1);
+  border-top: 3px solid var(--orange);
+}
+
+.service-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 1.25rem; color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.card-ink h3 { color: var(--cream); }
+
+.service-card p {
+  font-size: 0.9rem; line-height: 1.75;
+  color: var(--navy); font-weight: 400;
+  margin-bottom: 1.25rem;
+}
+.card-ink p { color: var(--ice); }
+.service-card p:last-of-type { margin-bottom: 0; }
+
+.pricing-tag {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--orange);
+  border: 1px solid rgba(232,117,26,0.3);
+  border-radius: 3px;
+  padding: 0.25rem 0.65rem;
+  margin-bottom: 1rem;
+}
+.card-ink .pricing-tag {
+  color: var(--soft-orange);
+  border-color: rgba(244,162,97,0.3);
+}
+
+.service-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--orange); text-decoration: none;
+  margin-top: 1.25rem; transition: gap 0.2s;
+}
+.card-ink .service-link { color: var(--soft-orange); }
+.service-link:hover { gap: 0.65rem; }
+
+/* CTA */
+.cta-section {
+  background: var(--ink);
+  padding: 6rem 0;
+  border-left: 4px solid var(--orange);
+  text-align: center;
+}
+.cta-section h2 { color: var(--cream); max-width: 520px; margin: 0 auto 1rem; }
+.cta-section p {
+  font-size: 0.97rem; font-weight: 400;
+  color: var(--ice);
+  max-width: 440px; margin: 0 auto 2.5rem; line-height: 1.75;
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(202,220,252,0.06);
+  padding: 2.5rem 0;
+}
+.footer-inner {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-left { font-size: 0.78rem; color: var(--muted); }
+.footer-left strong { font-family: Georgia, serif; font-style: italic; color: var(--ice); opacity: 0.4; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--ice); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.ha { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+.ha1 { animation-delay: 0.05s; }
+.ha2 { animation-delay: 0.2s; }
+.ha3 { animation-delay: 0.35s; }
+
+@media (max-width: 900px) {
+  .service-grid { grid-template-columns: 1fr; }
+  .service-grid-3 { grid-template-columns: 1fr; }
+  .assessment-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="logistics.html">CargoWise</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow eyebrow-soft ha ha1">Services</span>
+      <h1 class="ha ha2">What we do and how we work.</h1>
+      <p class="hero-sub ha ha3">Fixed-price projects, flexible support, and training that sticks. All built around CargoWise and the people who run it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AI READINESS ASSESSMENT -->
+<section class="assessment-band reveal">
+  <div class="container">
+    <div class="assessment-inner">
+      <div>
+        <span class="eyebrow eyebrow-orange">Start Here</span>
+        <h2>Not sure where to begin? Start with an AI Readiness Assessment.</h2>
+        <p>We assess your current CargoWise workflow configuration against the three ADA steps and tell you exactly where you are and what needs to change before AI agents can do their job properly. The starting point for most of our engagements.</p>
+      </div>
+      <a href="contact.html" class="btn-primary">Book an Assessment &#8594;</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section-ink">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow eyebrow-soft">Projects</span>
+      <h2>Defined scope. Fixed price. Clear outcome.</h2>
+      <p class="section-lead">We scope each project before any work begins. You know exactly what you are getting and what it costs.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card card-ink reveal">
+        <span class="pricing-tag">Fixed Price</span>
+        <h3>Workflow Configuration</h3>
+        <p>Milestones, tasks and triggers built against your SOPs in CargoWise. Every job type mapped, sequenced and ready to run consistently. The foundation for PAVE, AI agents, and everything else that follows.</p>
+        <p>We work through your operation job type by job type, configure the workflow engine, and make sure your team knows how to use and maintain it.</p>
+        <a href="contact.html" class="service-link">Talk to us &#8594;</a>
+      </div>
+      <div class="service-card card-ink reveal">
+        <span class="pricing-tag">Fixed Price</span>
+        <h3>PAVE Implementation</h3>
+        <p>Visual boards, buffer management and performance measurement configured for your operation. PAVE makes work visible, surfaces the constraint, and keeps the right work in front of the right person including current task load against available capacity.</p>
+        <p>We configure PAVE, train your team to use it, and work with your managers on how to respond to what the board is telling them.</p>
+        <a href="contact.html" class="service-link">Talk to us &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTING AND SUPPORT -->
+<section class="section-cream">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow eyebrow-orange">Consulting and Support</span>
+      <h2>Ongoing support as your operation evolves.</h2>
+      <p class="section-lead">Ad hoc or on a support agreement. For everything that is not a defined project.</p>
+    </div>
+    <div class="service-grid-3">
+      <div class="service-card card-white reveal">
+        <span class="pricing-tag">Ad Hoc or Support Agreement</span>
+        <h3>CargoWise Optimisation</h3>
+        <p>Workflow tweaks, milestone adjustments, trigger fixes. Keeping your configuration current as your operation changes and new job types come on board.</p>
+        <a href="contact.html" class="service-link">Talk to us &#8594;</a>
+      </div>
+      <div class="service-card card-white reveal">
+        <span class="pricing-tag">Ad Hoc or Support Agreement</span>
+        <h3>AI Feature Implementation</h3>
+        <p>As new Value Pack features go live, we help you assess readiness, configure the workflow underneath them, and get them working properly in your operation.</p>
+        <a href="contact.html" class="service-link">Talk to us &#8594;</a>
+      </div>
+      <div class="service-card card-white reveal">
+        <span class="pricing-tag">Ad Hoc or Support Agreement</span>
+        <h3>PAVE Tuning and Maintenance</h3>
+        <p>Buffer adjustments, board redesigns, performance measurement reviews. PAVE is not a set-and-forget system. We keep it working as your operation grows and changes.</p>
+        <a href="contact.html" class="service-link">Talk to us &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section class="section-white">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow eyebrow-orange">Training</span>
+      <h2>Skills that change how your team works.</h2>
+      <p class="section-lead">Priced per person. Delivered as a programme.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card card-cream reveal">
+        <span class="pricing-tag">Per Person</span>
+        <h3>Black Belt in Thinking</h3>
+        <p>Every stage of Automate, Delegate, Accelerate makes higher demands on human judgement. Automating requires people who understand their own workflows. Delegating requires people who know when an agent has got it wrong and why. Managing escalations under pressure requires rapid cause-and-effect reasoning and the ability to decide fast without second-guessing.</p>
+        <p>These are trainable skills. BBIT is that training — the same thinking discipline that PAVE is built on, applied to the humans who run the operation. Not a standalone personal development course. The prerequisite for the rest of the operation working as designed.</p>
+        <a href="https://blackbeltinthinking.com" target="_blank" rel="noopener" class="service-link">Visit blackbeltinthinking.com &#8599;</a>
+      </div>
+      <div class="service-card card-cream reveal">
+        <span class="pricing-tag">Per Person</span>
+        <h3>PAVE Certification</h3>
+        <p>Three levels, each building on the last. PCO gives operators the foundation — they know which job to work on next and why. PCS gives team leaders the systems view, managing flow across the whole operation, not just individual jobs. PCP gives operations managers the tools to design, tune and maintain the PAVE system as the business changes.</p>
+        <p>Authored by ViAGO. Available via WiseTech Academy.</p>
+        <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.4rem;">
+          <span style="font-size:0.82rem;font-weight:600;color:var(--navy);">PCO — Certified Operator</span>
+          <span style="font-size:0.82rem;font-weight:600;color:var(--navy);">PCS — Certified Specialist</span>
+          <span style="font-size:0.82rem;font-weight:600;color:var(--navy);">PCP — Certified Professional</span>
+        </div>
+        <a href="contact.html" class="service-link">Talk to us about certification &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <div class="container">
+    <span class="eyebrow eyebrow-soft" style="display:block;margin-bottom:1rem;">Get Started</span>
+    <h2>Not sure which service is right for you?</h2>
+    <p>Most engagements start with an AI Readiness Assessment. Book a call and we will work out the right starting point together.</p>
+    <a href="contact.html" class="btn-primary">Book a Call &#8594;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>ViAGO</strong> &nbsp;&#183;&nbsp; Prepare your people. Prepare your operation.
+      </div>
+      <div class="footer-links">
+        <a href="logistics.html">CargoWise</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-inner" style="margin-top:1rem">
+      <div class="footer-left">&copy; ViAGO Holdings Limited 2026. All rights reserved.</div>
+      <div>
+        <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" style="height:36px;width:auto;opacity:0.65;display:block;">
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+  document.querySelector('.nav-links').classList.toggle('open');
+});
+</script>
+</body>
+</html>
