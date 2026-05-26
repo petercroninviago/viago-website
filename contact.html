@@ -1,100 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact — ViAGO</title>
-    <meta name="description" content="Book a call with ViAGO. We help logistics and software firms prepare their people and operations for the agent era.">
-    <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — ViAGO</title>
+<meta name="description" content="Get in touch with ViAGO. Book an AI Readiness Assessment or just start a conversation about your CargoWise operation.">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #0A1628;
+  --cream: #F4F1EA;
+  --orange: #E8751A;
+  --navy: #1E3A5F;
+  --soft-orange: #F4A261;
+  --ice: #CADCFC;
+  --white: #FFFFFF;
+  --muted: #6B7280;
+  --rule: #D9D4C7;
+  --max: 1200px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Calibri, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(202,220,252,0.07);
+  height: 68px;
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 2.5rem;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; text-decoration: none; height: 68px;
+}
+.nav-logo img {
+  height: 40px; width: auto; display: block;
+  filter: brightness(0) invert(1); opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover img { opacity: 1; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ice); margin: 5px 0; }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--ice); text-decoration: none;
+  opacity: 0.75; transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  background: var(--orange) !important;
+  color: var(--cream) !important;
+  padding: 0.5rem 1.4rem !important;
+  border-radius: 3px !important;
+  font-weight: 600 !important; font-size: 0.8rem !important;
+  text-transform: uppercase !important; letter-spacing: 0.04em !important;
+  opacity: 1 !important; transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--soft-orange) !important; }
+@media (max-width: 900px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; background: var(--ink); padding: 1.5rem 2.5rem 2rem; gap: 1.25rem; border-bottom: 1px solid rgba(202,220,252,0.08); }
+  .nav-links.open { display: flex; }
+}
+
+/* HERO */
+.hero {
+  background: var(--ink);
+  padding: 8.5rem 0 5rem;
+  position: relative; overflow: hidden;
+  border-left: 4px solid var(--orange);
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(202,220,252,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(202,220,252,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.hero-content { max-width: 620px; position: relative; }
+.eyebrow {
+  font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  margin-bottom: 1.1rem; display: block;
+}
+.eyebrow-soft { color: var(--soft-orange); }
+.eyebrow-orange { color: var(--orange); }
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 700; font-style: italic;
+  color: var(--cream); line-height: 1.18;
+  margin-bottom: 1.25rem;
+}
+.hero-sub {
+  font-size: 1rem; font-weight: 400;
+  color: var(--ice); line-height: 1.75;
+}
+
+/* MAIN CONTENT */
+.contact-section {
+  background: var(--cream);
+  padding: 6rem 0;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+/* LEFT SIDE */
+.contact-left h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.15; color: var(--ink);
+  margin-bottom: 0;
+}
+
+/* DETAILS */
+.contact-details {
+  margin-top: 2.5rem;
+  display: flex; flex-direction: column; gap: 2rem;
+}
+.contact-detail { display: flex; flex-direction: column; gap: 0.4rem; }
+.detail-label {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--navy);
+}
+.detail-value {
+  font-size: 1rem; font-weight: 400;
+  color: var(--navy); line-height: 1.5;
+}
+.detail-value a { color: var(--navy); text-decoration: none; transition: color 0.2s; }
+.detail-value a:hover { color: var(--orange); }
+.schedule-link { color: var(--orange) !important; font-weight: 500; }
+.schedule-link:hover { opacity: 0.75; }
+
+/* RIGHT SIDE */
+.form-panel {
+  background: var(--white);
+  border-radius: 6px;
+  padding: 2.5rem;
+  border: 1px solid var(--rule);
+}
+.form-panel-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.form-panel-header h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 1.4rem; color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.form-panel-header p {
+  font-size: 0.9rem; font-weight: 400;
+  color: var(--navy); line-height: 1.7;
+}
+
+/* WHAT TO EXPECT */
+.what-to-expect {
+  margin-top: 1.5rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.expect-item {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  font-size: 0.88rem; font-weight: 400;
+  color: var(--navy); line-height: 1.5;
+}
+.expect-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(232,117,26,0.1);
+  border: 1.5px solid var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.expect-dot::after {
+  content: ''; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--orange);
+}
+
+/* HUBSPOT FORM */
+.hs-form-wrap { margin-top: 2rem; }
+.hs-form-frame { width: 100%; }
+
+/* HUBSPOT OVERRIDES — apply once form loads on live domain */
+.hs-form input,
+.hs-form textarea,
+.hs-form select {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Calibri, Arial, sans-serif;
+  border: 1px solid #D9D4C7;
+  border-radius: 3px;
+  padding: 0.65rem 1rem;
+  font-size: 0.92rem;
+  color: #1E3A5F;
+  background: #FFFFFF;
+  width: 100%;
+}
+.hs-form input:focus,
+.hs-form textarea:focus {
+  outline: none;
+  border-color: #E8751A;
+}
+.hs-button,
+.hs-form input[type="submit"] {
+  background: #E8751A;
+  color: #F4F1EA;
+  border: none;
+  border-radius: 3px;
+  padding: 0.85rem 2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.hs-button:hover,
+.hs-form input[type="submit"]:hover {
+  background: #F4A261;
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(202,220,252,0.06);
+  padding: 2.5rem 0;
+}
+.footer-inner {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-left { font-size: 0.78rem; color: var(--muted); }
+.footer-left strong {
+  font-family: Georgia, serif;
+  font-style: italic; color: var(--ice); opacity: 0.4;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--ice); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.ha { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+.ha1 { animation-delay: 0.05s; }
+.ha2 { animation-delay: 0.2s; }
+.ha3 { animation-delay: 0.35s; }
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+</style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
-        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links">
-            <a href="logistics.html">CargoWise</a>
-            <a href="services.html">Services</a>
-            <a href="about.html">About</a>
-            <a href="contact.html" class="nav-cta">Book a Call</a>
-        </div>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="logistics.html">CargoWise</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
     </div>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero on-ink">
-    <div class="container">
-        <p class="eyebrow hero-anim hero-anim-d1">Get in Touch</p>
-        <h1 class="hero-anim hero-anim-d2">Book a call. No pitch deck, no sales process.</h1>
-        <p class="hero-sub hero-anim hero-anim-d3">Tell us what you're working with. We'll tell you what we'd do about it.</p>
-        <a href="https://outlook.office365.com/owa/calendar/ViAGOTeamBookingPage@viagointernational.onmicrosoft.com/bookings/" class="hero-cta hero-anim hero-anim-d4" target="_blank" rel="noopener">Book a Time</a>
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow eyebrow-soft ha ha1">Get in Touch</span>
+      <h1 class="ha ha2">Let's look at your operation.</h1>
+      <p class="hero-sub ha ha3">Every conversation starts differently. Some people come with a specific problem they want to solve. Some want to understand what AI features are worth switching on. Some want to know if PAVE is right for them before committing to anything. All of them get the same thing: an honest read on where their operation is and what's worth doing next.</p>
     </div>
+  </div>
 </section>
 
-<!-- CONTACT DETAILS -->
-<section class="section-cream">
-    <div class="container">
-        <div class="reveal">
-            <h2>Contact details</h2>
-        </div>
-        <div class="contact-grid reveal">
-            <div>
-                <p class="contact-label">Email</p>
-                <p class="contact-detail"><a href="mailto:info@viagointernational.com">info@viagointernational.com</a></p>
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
 
-                <p class="contact-label" style="margin-top: 2rem;">Location</p>
-                <p class="contact-detail">Sydney, Australia</p>
-
-                <p class="contact-label" style="margin-top: 2rem;">Booking</p>
-                <p class="contact-detail">
-                    <a href="https://outlook.office365.com/owa/calendar/ViAGOTeamBookingPage@viagointernational.onmicrosoft.com/bookings/" target="_blank" rel="noopener">Schedule a call online →</a>
-                </p>
+      <!-- LEFT: DETAILS -->
+      <div class="contact-left reveal">
+        <h2>Contact details</h2>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="detail-label">Email</div>
+            <div class="detail-value">
+              <a href="mailto:sales@viago.com.au">sales@viago.com.au</a>
             </div>
-            <div>
-                <p class="contact-label">What to expect</p>
-                <p class="contact-detail" style="margin-top: 0.5rem;">A 30-minute call. We'll ask about your current operation, your CargoWise configuration, and where you're feeling the most pressure. No obligation.</p>
-                <p class="contact-detail">We work with freight forwarders, customs brokers, and 3PLs on CargoWise, and founder-led software firms. If you're on CargoWise and thinking about the agent era, we probably have something useful to say.</p>
+          </div>
+          <div class="contact-detail">
+            <div class="detail-label">Location</div>
+            <div class="detail-value">Sydney, Australia</div>
+          </div>
+          <div class="contact-detail">
+            <div class="detail-label">Booking</div>
+            <div class="detail-value">
+              <a href="https://outlook.office365.com/owa/calendar/ViAGOTeamBookingPage@viagointernational.onmicrosoft.com/bookings/" target="_blank" rel="noopener" class="schedule-link">Schedule a call online &#8594;</a>
             </div>
+          </div>
         </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div class="contact-right reveal">
+        <div class="form-panel">
+          <div class="form-panel-header">
+            <span class="eyebrow eyebrow-orange">AI Readiness Assessment</span>
+            <h3>Is your CargoWise setup ready for AI?</h3>
+            <p>We assess your current workflow configuration against the three steps — Automate, Delegate, Accelerate — and tell you exactly where you are and what needs to change.</p>
+            <div class="what-to-expect">
+              <div class="expect-item">
+                <div class="expect-dot"></div>
+                A review of your current CargoWise workflow configuration
+              </div>
+              <div class="expect-item">
+                <div class="expect-dot"></div>
+                An honest assessment of which AI features you are ready for
+              </div>
+              <div class="expect-item">
+                <div class="expect-dot"></div>
+                A clear view of what needs to change and in what order
+              </div>
+            </div>
+          </div>
+          <div class="hs-form-wrap">
+            <script src="https://js-ap1.hsforms.net/forms/embed/442443697.js" defer></script>
+            <div class="hs-form-frame" data-region="ap1" data-form-id="17a90cde-08ec-4b6c-88e7-220df1927076" data-portal-id="442443697"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <div class="footer-top">
-        <div>
-            <span class="footer-brand">ViAGO</span>
-            <span class="footer-tagline">Prepare your people. Prepare your operation.</span>
-        </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="logistics.html">CargoWise</a>
-            <a href="services.html">Services</a>
-            <a href="cargowise-ai.html">CargoWise AI</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>ViAGO</strong> &nbsp;&#183;&nbsp; Prepare your people. Prepare your operation.
+      </div>
+      <div class="footer-links">
+        <a href="logistics.html">CargoWise</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
-    <div class="footer-bottom">
-        <span class="footer-copy">&copy; ViAGO Holdings Limited 2026. All rights reserved.</span>
-        <div class="footer-badge">
-            <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner">
-        </div>
+    <div class="footer-inner" style="margin-top:1rem">
+      <div class="footer-left">&copy; ViAGO Holdings Limited 2026. All rights reserved.</div>
+      <div>
+        <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner" style="height:36px;width:auto;opacity:0.65;display:block;">
+      </div>
     </div>
+  </div>
 </footer>
 
 <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
