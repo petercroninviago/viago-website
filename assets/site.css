@@ -201,6 +201,19 @@ h2 .dot{color:var(--orange)}
 .logo-word{font-family:var(--font-display);font-weight:500;font-size:clamp(16px,1.8vw,21px);
   letter-spacing:0.005em;color:var(--ice);opacity:0.6;white-space:nowrap;transition:opacity .3s var(--ease)}
 .logo-word:hover{opacity:1}
+/* real-logo bar: one white panel normalises mixed logo formats */
+.logo-bar{
+  background:var(--white);border:1px solid var(--rule);border-radius:16px;
+  padding:clamp(20px,2.4vw,30px) clamp(24px,3.5vw,48px);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:clamp(28px,4vw,56px);
+  box-shadow:0 24px 60px -40px rgba(0,0,0,0.55);
+}
+.logo-bar img{
+  height:clamp(22px,2.4vw,30px);width:auto;object-fit:contain;
+  opacity:0.9;transition:opacity .3s var(--ease),transform .3s var(--ease);
+}
+.logo-bar img:hover{opacity:1;transform:translateY(-2px)}
 
 /* ============ HOW WE WORK (premium cards) ============ */
 .how-head{max-width:760px}
@@ -209,16 +222,19 @@ h2 + .how-sub,.how-sub{font-size:clamp(15px,1.4vw,17.5px);color:var(--muted);mar
 .section-head h2{margin-top:18px}
 
 .cards{margin-top:clamp(44px,6vh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:var(--white);border:1px solid var(--rule);border-radius:16px;padding:30px 28px 32px;
+.card{background:var(--white);border:1px solid var(--rule);border-radius:16px;
   position:relative;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease)}
-.card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:2;
   background:linear-gradient(90deg,var(--orange),var(--soft-orange));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
 .card:hover{transform:translateY(-5px);box-shadow:0 24px 48px -28px rgba(10,22,40,0.4);border-color:#cfc8b6}
 .card:hover::before{transform:scaleX(1)}
+.card-illo{height:160px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,rgba(202,220,252,0.18),rgba(244,241,234,0.5));border-bottom:1px solid var(--rule)}
+.card-illo svg{height:118px;width:auto;display:block}
+.card-body{padding:24px 26px 30px}
 .card-num{font-family:var(--font-ui);font-size:12px;font-weight:600;letter-spacing:0.1em;color:var(--orange);display:flex;align-items:center;gap:10px}
 .card-num .ln{flex:1;height:1px;background:var(--rule)}
-.card-ico{width:46px;height:46px;border:1px solid var(--rule);border-radius:11px;display:flex;align-items:center;justify-content:center;margin:20px 0 22px;background:var(--cream)}
-.card h3{font-family:var(--font-display);font-weight:500;font-size:23px;letter-spacing:-0.01em;color:var(--ink)}
+.card h3{font-family:var(--font-display);font-weight:500;font-size:23px;letter-spacing:-0.01em;color:var(--ink);margin-top:16px}
 .card p{margin-top:11px;font-size:15px;line-height:1.62;color:var(--navy);opacity:0.86}
 
 /* ============ PAVE SPOTLIGHT (dark, two-col, legible board) ============ */
@@ -257,6 +273,21 @@ h2 + .how-sub,.how-sub{font-size:clamp(15px,1.4vw,17.5px);color:var(--muted);mar
 .text-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:var(--font-ui);font-weight:600;
   font-size:13px;letter-spacing:0.04em;text-transform:uppercase;color:var(--orange);transition:gap .25s var(--ease)}
 .text-link:hover{gap:12px}
+
+/* ============ PEOPLE / AUTHORSHIP ============ */
+.people-grid{display:grid;grid-template-columns:1fr .82fr;gap:clamp(36px,6vw,76px);align-items:center}
+.people-copy .lead{font-family:var(--font-read);font-size:clamp(16px,1.5vw,18.5px);line-height:1.7;color:var(--navy);margin-top:18px;max-width:46ch}
+.people-proof{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.proof-chip{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border:1px solid var(--rule);border-radius:100px;
+  font-family:var(--font-ui);font-size:13px;font-weight:600;color:var(--ink);background:var(--white)}
+.proof-chip .pd{width:7px;height:7px;border-radius:50%;background:var(--orange);flex:0 0 auto}
+.people-photo{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--rule);
+  aspect-ratio:4/5;box-shadow:0 30px 60px -40px rgba(10,22,40,0.5)}
+.people-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.people-cap{position:absolute;left:0;right:0;bottom:0;padding:20px;background:linear-gradient(transparent,rgba(10,22,40,0.82));color:#fff}
+.people-cap .nm{font-family:var(--font-display);font-weight:500;font-size:19px}
+.people-cap .rl{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ice);opacity:0.85;margin-top:3px}
+@media (max-width:860px){.people-grid{grid-template-columns:1fr;gap:36px}.people-photo{max-width:360px}}
 
 /* ============ CLOSING CTA ============ */
 .cta-band{text-align:center;position:relative;overflow:hidden}
