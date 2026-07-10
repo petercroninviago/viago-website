@@ -339,7 +339,7 @@ h2 + .how-sub,.how-sub{font-size:clamp(15px,1.4vw,17.5px);color:var(--muted);mar
   transition:opacity .25s var(--ease);
 }
 a.cred-item:hover{opacity:1}
-.cred-item img{height:34px;width:auto;display:block}
+.cred-item img{height:36px;width:auto;max-width:180px;object-fit:contain;display:block}
 .cred-item .cd{width:6px;height:6px;border-radius:50%;background:var(--soft-orange);flex:0 0 auto}
 
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
