@@ -1,148 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mainfreight Case Study — ViAGO</title>
-    <meta name="description" content="How Mainfreight Air &amp; Ocean Australia improved operations across 240+ branches with CargoWise productivity tools and ViAGO.">
-    <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mainfreight Case Study — ViAGO</title>
+<meta name="description" content="How Mainfreight Air &amp; Ocean Australia improved operations across 240+ branches with CargoWise productivity tools and ViAGO.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;450;500;600&family=Inter+Tight:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo" aria-label="ViAGO home"><img src="assets/viago-logo.png" alt="ViAGO"></a>
-        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links">
-            <a href="logistics.html">CargoWise</a>
-            <a href="services.html">Services</a>
-            <a href="about.html">About</a>
-            <a href="contact.html" class="nav-cta">Book a Call</a>
-        </div>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo" aria-label="ViAGO home"><span class="vi">Vi</span><span class="a">A</span><span class="go">GO</span></a>
+    <button class="menu-toggle" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="logistics.html">CargoWise</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="btn btn-primary">Book a Call</a>
     </div>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero on-ink">
-    <div class="container">
-        <p class="eyebrow hero-anim hero-anim-d1">Case Study</p>
-        <img src="assets/mainfreight-logo.png" alt="Mainfreight" class="cs-hero-logo hero-anim hero-anim-d2">
-        <h1 class="hero-anim hero-anim-d3">Mainfreight Air &amp; Ocean Australia — Improving operations across 240+ branches.</h1>
+<header class="hero hero--page">
+  <div class="wrap hero-inner">
+    <a href="case-studies.html" class="text-link reveal" style="margin:0 0 22px">← All customer stories</a>
+    <span class="eyebrow-mono reveal"><span class="tick"></span>Customer Story · Mainfreight</span>
+    <h1 class="reveal d1" style="max-width:22ch">Improving operations across <span class="em">240+ branches.</span></h1>
+    <dl class="cs-meta reveal d2">
+      <div><dt>Industry</dt><dd>Freight Forwarding &amp; Logistics</dd></div>
+      <div><dt>Scale</dt><dd>240+ branches globally</dd></div>
+      <div><dt>Location</dt><dd>Australia (Air &amp; Ocean)</dd></div>
+      <div><dt>Platform</dt><dd>CargoWise One</dd></div>
+      <div><dt>Engagement</dt><dd>Productivity Suite implementation</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- THE PROBLEM -->
+<section class="section section-cream" style="padding-top:clamp(48px,7vh,80px)">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow-mono reveal"><span class="tick"></span>The Problem</span>
+      <h2 class="reveal d1" style="margin-top:18px;max-width:14ch;font-size:clamp(26px,3.4vw,42px)">The work was invisible.</h2>
     </div>
+    <div class="ed-body dropcap reveal d2">
+      <p>Like most freight forwarders, Mainfreight had always sought to improve operational efficiency — but often fell into making process changes reactively, after a shipment missed or a service failure that shouldn't have happened.</p>
+      <p>Freight forwarding operations are inherently variable — vessel delays, documentation exceptions, customs holds. The question isn't whether problems will occur. It's whether you see them in time to do something about them.</p>
+      <p>Mainfreight's teams were skilled and experienced, but the work was invisible. There was no single view of what was in progress, what was at risk, or where the queue was building. Workloads weren't balanced across the team. The signal that something was going wrong was usually a customer complaint.</p>
+    </div>
+  </div>
 </section>
 
-<!-- OVERVIEW -->
-<section class="section-cream">
-    <div class="container">
-        <div class="cs-overview reveal">
-            <dl class="cs-meta">
-                <dt>Industry</dt>
-                <dd>Freight Forwarding &amp; Logistics</dd>
-                <dt>Scale</dt>
-                <dd>240+ branches globally</dd>
-                <dt>Location</dt>
-                <dd>Australia (Air &amp; Ocean division)</dd>
-                <dt>Platform</dt>
-                <dd>CargoWise One</dd>
-                <dt>Engagement</dt>
-                <dd>CargoWise Productivity Suite implementation</dd>
-            </dl>
-            <div>
-                <h2>The challenge</h2>
-                <p>Like most freight forwarders, Mainfreight had always sought to improve operational efficiency — but often fell into making process changes reactively, after a shipment missed or a service failure that shouldn't have happened.</p>
-                <p>The goal was to see possible problems before they escalated, complete jobs in the right order, share workloads evenly, and surface bottlenecks before they hit customers.</p>
-            </div>
-        </div>
+<!-- THE WORK -->
+<section class="section section-ink on-ink">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow-mono reveal"><span class="tick"></span>The Work</span>
+      <h2 class="reveal d1" style="margin-top:18px;max-width:14ch;font-size:clamp(26px,3.4vw,42px)">With the teams, not at them.</h2>
     </div>
+    <div class="ed-body reveal d2">
+      <p>ViAGO implemented the CargoWise One Productivity Suite across the Mainfreight Air &amp; Ocean Australia operation — configuring workflow visualisation across the shipment lifecycle.</p>
+      <p>Mainfreight staff were engaged in planning and implementation from the start, not handed a finished system. That mattered: the people who understand where the problems actually occur are the operators, not the consultants.</p>
+      <p>The configuration mapped each critical milestone in the sea and air import and export workflow, created visibility of work in progress, and surfaced the constraint — which jobs were at risk, which queues were building, and which teams were under or overloaded.</p>
+    </div>
+  </div>
 </section>
 
-<!-- THE CHALLENGE -->
-<section class="section-cream" style="padding-top: 0; border-top: 1px solid var(--rule);">
-    <div class="container">
-        <div class="reveal">
-            <h2>The problem.</h2>
-            <p>Freight forwarding operations are inherently variable — vessel delays, documentation exceptions, customs holds. The question isn't whether problems will occur. It's whether you see them in time to do something about them.</p>
-            <p>Mainfreight's teams were skilled and experienced, but the work was invisible. There was no single view of what was in progress, what was at risk, or where the queue was building. Workloads weren't balanced across the team. The signal that something was going wrong was usually a customer complaint.</p>
-            <p>The existing approach to improvement was reactive: fix the process after the failure. What was needed was a system that made the flow visible before failures happened.</p>
-        </div>
+<!-- QUOTE -->
+<section class="section quote-band" style="padding-block:clamp(56px,8vh,96px)">
+  <div class="wrap">
+    <div class="pull-quote reveal" style="max-width:820px;margin:0 auto;text-align:center">
+      <blockquote>Like most freight forwarders, Mainfreight has always sought out ways to improve the efficiency of our operations.</blockquote>
+      <div class="quote-attr" style="margin-top:22px"><strong>Robert Cotter</strong>Business Solutions &amp; Process Manager, Mainfreight Air &amp; Ocean Australia</div>
     </div>
+  </div>
 </section>
 
-<!-- WHAT WE DID -->
-<section class="section-ink on-ink">
-    <div class="container">
-        <div class="reveal">
-            <h2>The work.</h2>
-            <p>ViAGO implemented the CargoWise One Productivity Suite across the Mainfreight Air &amp; Ocean Australia operation — configuring workflow visualisation across the shipment lifecycle.</p>
-            <p>The implementation was done with the teams, not at them. Mainfreight staff were engaged in planning and implementation from the start, not handed a finished system. That mattered: the people who understand where the problems actually occur are the operators, not the consultants.</p>
-            <p>The configuration mapped each critical milestone in the sea and air import and export workflow, created visibility of work in progress, and surfaced the constraint — which jobs were at risk, which queues were building, and which teams were under or overloaded.</p>
-        </div>
+<!-- WHAT CHANGED -->
+<section class="section section-cream">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow-mono reveal"><span class="tick"></span>What Changed</span>
+      <h2 class="reveal d1" style="margin-top:18px;max-width:14ch;font-size:clamp(26px,3.4vw,42px)">Five KPIs, all up.</h2>
     </div>
-</section>
-
-<!-- THE OUTCOME -->
-<section class="section-cream">
-    <div class="container">
-        <div class="reveal">
-            <h2>What changed.</h2>
-            <blockquote class="pull-quote-cream">"Like most freight forwarders, Mainfreight has always sought out ways to improve the efficiency of our operations."</blockquote>
-            <p class="pull-attribution-cream">Robert Cotter, Business Solutions and Process Manager, Mainfreight Air &amp; Ocean Australia</p>
-            <ul class="outcome-points" style="margin-top: 2rem;">
-                <li>All five key internal KPIs improved substantially, correlating directly with the point at which the productivity tools were fully implemented.</li>
-                <li>Workloads became visible and balanced across the team.</li>
-                <li>Problems surfaced before they reached customers, not after.</li>
-                <li>An unexpected benefit: the daily productivity stand-ups that came with the implementation identified and developed the next generation of team leaders.</li>
-            </ul>
-        </div>
+    <div class="reveal d2">
+      <ul class="outcome-list" style="margin-top:6px">
+        <li><span class="mk"></span>All five key internal KPIs improved substantially, correlating directly with the point at which the productivity tools were fully implemented.</li>
+        <li><span class="mk"></span>Workloads became visible and balanced across the team.</li>
+        <li><span class="mk"></span>Problems surfaced before they reached customers, not after.</li>
+        <li><span class="mk"></span>An unexpected benefit: the daily productivity stand-ups that came with the implementation identified and developed the next generation of team leaders.</li>
+      </ul>
     </div>
+  </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section on-ink">
-    <div class="container">
-        <div class="reveal">
-            <h2>Want to see what this looks like in your operation?</h2>
-            <p>We've done this across freight forwarding and customs brokerage operations at scale. If you're on CargoWise, we can tell you quickly what configuration would give you the same visibility.</p>
-            <a href="contact.html" class="hero-cta">Book a Call</a>
-        </div>
+<section class="section section-ink cta-band on-ink">
+  <div class="wrap">
+    <div class="inner">
+      <span class="eyebrow-light reveal"><span class="tick"></span>Get Started</span>
+      <h2 class="reveal d1">Want to see what this looks like in your operation?</h2>
+      <p class="reveal d2">We've done this across freight forwarding and customs brokerage operations at scale. If you're on CargoWise, we can tell you quickly what configuration would give you the same visibility.</p>
+      <div class="cta-row reveal d3">
+        <a href="contact.html" class="btn btn-primary btn-lg">Book a Call</a>
+        <a href="case-studies.html" class="btn btn-ghost btn-lg">More customer stories <span class="arrow">→</span></a>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
+<footer class="footer">
+  <div class="wrap">
     <div class="footer-top">
-        <div>
-            <span class="footer-brand">ViAGO</span>
-            <span class="footer-tagline">Prepare your people. Prepare your operation.</span>
-        </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="logistics.html">CargoWise</a>
-            <a href="services.html">Services</a>
-            <a href="cargowise-ai.html">CargoWise AI</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="vi">Vi</span><span class="a">A</span><span class="go">GO</span></a>
+        <p>Prepare your people. Prepare your operation. Theory-of-Constraints specialists and CargoWise Service Partner.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="logistics.html">CargoWise</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="case-studies.html">Customer Stories</a>
+        <a href="cargowise-ai-features.html">CargoWise AI Features</a>
+        <a href="https://blackbeltinthinking.com" target="_blank" rel="noopener">Black Belt in Thinking</a>
+        <a href="contact.html">AI Readiness Assessment</a>
+      </div>
+    </div>
+    <div class="footer-cred">
+      <span class="cred-label">Credentials &amp; Memberships</span>
+      <span class="cred-item"><img src="assets/cw-badge-white.png" alt="CargoWise Service Partner"></span>
+      <span class="cred-item"><span class="cd"></span>Authors of the PAVE Certification · WiseTech Academy</span>
+      <a class="cred-item" href="https://blackbeltinthinking.com" target="_blank" rel="noopener"><span class="cd"></span>Black Belt in Thinking</a>
+      <span class="cred-item" title="International Forwarders &amp; Customs Brokers Association of Australia"><span class="cd"></span>IFCBAA Member</span>
+      <span class="cred-item" title="Customs Brokers &amp; Freight Forwarders of New Zealand"><span class="cd"></span>CBAFF Member</span>
+      <span class="cred-item" title="Freight &amp; Trade Alliance"><span class="cd"></span>FTA Member</span>
     </div>
     <div class="footer-bottom">
-        <span class="footer-copy">&copy; ViAGO Holdings Limited 2026. All rights reserved.</span>
-        <div class="footer-badge">
-            <img src="assets/cw-badge-white.png" alt="CargoWise Service Partner">
-        </div>
+      <span>&copy; ViAGO Holdings Limited 2026. All rights reserved.</span>
+      <span>Sydney, Australia · <a href="mailto:sales@viago.com.au">sales@viago.com.au</a></span>
     </div>
+  </div>
 </footer>
 
 <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
+  (function(){
+    var btn=document.getElementById('menuBtn'), links=document.getElementById('navLinks');
+    if(btn&&links){
+      btn.addEventListener('click',function(){
+        var open=links.classList.toggle('open');
+        btn.classList.toggle('open',open);
+        btn.setAttribute('aria-expanded',open);
+      });
+      links.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click',function(){links.classList.remove('open');btn.classList.remove('open');btn.setAttribute('aria-expanded',false);});
+      });
+    }
+  })();
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
 </script>
-
 </body>
 </html>
