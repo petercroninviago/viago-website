@@ -1,0 +1,251 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" role="img"
+     aria-label="A container ship crosses without stopping while its paperwork is generated, chased and validated by AI agents, and lands as one complete pack on a PAVE board for human review">
+  <!-- ViAGO homepage hero graphic. Expects a dark (Ink #0A1628) background behind it.
+       Self-contained: all styles inline, classes and ids prefixed hsf- to avoid collisions when inlined. -->
+  <title>Automate, Delegate, Accelerate</title>
+  <style>
+    .hsf-ship { animation: hsf-ship 24s linear infinite; }
+    @keyframes hsf-ship {
+      from { transform: translateX(-480px); }
+      to   { transform: translateX(1260px); }
+    }
+    .hsf-ring {
+      opacity: 0; transform-box: fill-box; transform-origin: 50% 50%;
+      animation: hsf-ring 24s ease-out infinite;
+    }
+    @keyframes hsf-ring {
+      0%, 13%   { opacity: 0; transform: scale(0.4); }
+      16%       { opacity: 0.9; transform: scale(1); }
+      25%       { opacity: 0; transform: scale(2); }
+      26%, 100% { opacity: 0; transform: scale(2); }
+    }
+    .hsf-spawn { opacity: 0; animation: hsf-spawn 24s cubic-bezier(0.2, 0.7, 0.2, 1) infinite; }
+    @keyframes hsf-spawn {
+      0%, 19%   { opacity: 0; transform: translateY(26px); }
+      22%       { opacity: 1; transform: translateY(0); }
+      27%       { opacity: 1; transform: translateY(0); }
+      30%, 100% { opacity: 0; transform: translateY(0); }
+    }
+    .hsf-chase { opacity: 0; animation: hsf-chase 24s ease infinite; }
+    @keyframes hsf-chase {
+      0%, 32%   { opacity: 0; }
+      34%       { opacity: 1; }
+      44%       { opacity: 1; }
+      47%, 100% { opacity: 0; }
+    }
+    .hsf-return { opacity: 0; animation: hsf-return 24s ease infinite; }
+    @keyframes hsf-return {
+      0%, 46%   { opacity: 0; }
+      48%       { opacity: 1; }
+      58%       { opacity: 1; }
+      61%, 100% { opacity: 0; }
+    }
+    /* Persistent elements pop in at their own moment and ALL fade together
+       at 90-95%, as the ship's stern leaves the frame, so the loop resets clean. */
+    .hsf-in26, .hsf-in48, .hsf-in52, .hsf-in60, .hsf-in64 {
+      opacity: 0; transform-box: fill-box; transform-origin: 50% 50%;
+    }
+    .hsf-in26 { animation: hsf-in26 24s ease infinite; }
+    @keyframes hsf-in26 {
+      0%, 26% { opacity: 0; transform: scale(0.6); }
+      28%     { opacity: 1; transform: scale(1); }
+      90%     { opacity: 1; }
+      95%, 100% { opacity: 0; transform: scale(1); }
+    }
+    .hsf-in48 { animation: hsf-in48 24s ease infinite; }
+    @keyframes hsf-in48 {
+      0%, 50% { opacity: 0; transform: scale(0.6); }
+      52%     { opacity: 1; transform: scale(1); }
+      90%     { opacity: 1; }
+      95%, 100% { opacity: 0; transform: scale(1); }
+    }
+    .hsf-in52 { animation: hsf-in52 24s ease infinite; }
+    @keyframes hsf-in52 {
+      0%, 54% { opacity: 0; transform: scale(0.6); }
+      56%     { opacity: 1; transform: scale(1); }
+      90%     { opacity: 1; }
+      95%, 100% { opacity: 0; transform: scale(1); }
+    }
+    .hsf-in60 { animation: hsf-in60 24s ease infinite; }
+    @keyframes hsf-in60 {
+      0%, 60% { opacity: 0; transform: translateX(-12px); }
+      62%     { opacity: 1; transform: translateX(0); }
+      90%     { opacity: 1; }
+      95%, 100% { opacity: 0; transform: translateX(0); }
+    }
+    .hsf-in64 { animation: hsf-in64 24s ease infinite; }
+    @keyframes hsf-in64 {
+      0%, 64% { opacity: 0; transform: scale(0.6); }
+      66%     { opacity: 1; transform: scale(1); }
+      90%     { opacity: 1; }
+      95%, 100% { opacity: 0; transform: scale(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hsf-ring, .hsf-spawn, .hsf-chase, .hsf-return { display: none; }
+      .hsf-in26, .hsf-in48, .hsf-in52, .hsf-in60, .hsf-in64 { opacity: 1; animation: none; transform: none; }
+      .hsf-ship { animation: none; transform: translateX(390px); }
+    }
+  </style>
+  <defs>
+    <marker id="hsf-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#CADCFC" opacity="0.7"/>
+    </marker>
+    <g id="hsf-ship-sym">
+      <polygon points="0,6 415,6 442,18 424,50 22,50 2,32" fill="#16304E" stroke="#2C4A73" stroke-width="1.5"/>
+      <line x1="10" y1="38" x2="430" y2="38" stroke="#0A1628" stroke-width="3" opacity="0.5"/>
+      <rect x="8" y="-46" width="38" height="52" fill="#1E3A5F" stroke="#2C4A73"/>
+      <rect x="14" y="-38" width="26" height="5" fill="#CADCFC" opacity="0.35"/>
+      <g stroke="#2C4A73" stroke-width="1">
+        <rect x="62"  y="-12" width="42" height="18" fill="#1E3A5F"/>
+        <rect x="108" y="-12" width="42" height="18" fill="#24466E"/>
+        <rect x="154" y="-12" width="42" height="18" fill="#142B47"/>
+        <rect x="200" y="-12" width="42" height="18" fill="#1E3A5F"/>
+        <rect x="246" y="-12" width="42" height="18" fill="#24466E"/>
+        <rect x="292" y="-12" width="42" height="18" fill="#142B47"/>
+        <rect x="338" y="-12" width="42" height="18" fill="#1E3A5F"/>
+        <rect x="384" y="-12" width="42" height="18" fill="#24466E"/>
+        <rect x="62"  y="-30" width="42" height="18" fill="#142B47"/>
+        <rect x="108" y="-30" width="42" height="18" fill="#1E3A5F"/>
+        <rect x="200" y="-30" width="42" height="18" fill="#24466E"/>
+        <rect x="246" y="-30" width="42" height="18" fill="#142B47"/>
+        <rect x="338" y="-30" width="42" height="18" fill="#24466E"/>
+        <rect x="384" y="-30" width="42" height="18" fill="#1E3A5F"/>
+      </g>
+    </g>
+    <g id="hsf-doc">
+      <rect x="0" y="0" width="36" height="46" rx="3" fill="#F4F1EA"/>
+      <rect x="6" y="8" width="24" height="3" rx="1.5" fill="#1E3A5F" opacity="0.55"/>
+      <rect x="6" y="15" width="18" height="3" rx="1.5" fill="#1E3A5F" opacity="0.35"/>
+      <rect x="6" y="22" width="22" height="3" rx="1.5" fill="#1E3A5F" opacity="0.35"/>
+      <rect x="6" y="34" width="12" height="6" rx="1" fill="#CADCFC"/>
+    </g>
+    <g id="hsf-ghost">
+      <rect x="0" y="0" width="36" height="46" rx="3" fill="none" stroke="#CADCFC" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+      <text x="18" y="29" text-anchor="middle" font-family="'Inter Tight', Inter, 'Segoe UI', sans-serif" font-size="16" fill="#CADCFC" opacity="0.6">?</text>
+    </g>
+    <g id="hsf-check">
+      <circle cx="0" cy="0" r="8" fill="#CADCFC"/>
+      <path d="M -3.5 0 L -1 2.8 L 4 -3" stroke="#0A1628" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="hsf-pack">
+      <use href="#hsf-doc" transform="translate(0,8) scale(0.8)"/>
+      <use href="#hsf-doc" transform="translate(6,4) scale(0.8)"/>
+      <use href="#hsf-doc" transform="translate(12,0) scale(0.8)"/>
+      <use href="#hsf-check" transform="translate(44,4)"/>
+    </g>
+    <g id="hsf-bot">
+      <circle cx="0" cy="0" r="13" fill="#0A1628" stroke="#CADCFC" stroke-width="1.5"/>
+      <rect x="-6.5" y="-3.5" width="13" height="9.5" rx="2" fill="none" stroke="#CADCFC" stroke-width="1.5"/>
+      <line x1="0" y1="-3.5" x2="0" y2="-7" stroke="#CADCFC" stroke-width="1.5"/>
+      <circle cx="0" cy="-8.8" r="1.7" fill="#F4A261"/>
+      <rect x="-4" y="-1" width="2.4" height="3" fill="#CADCFC"/>
+      <rect x="1.6" y="-1" width="2.4" height="3" fill="#CADCFC"/>
+      <line x1="-9.5" y1="0.8" x2="-6.5" y2="0.8" stroke="#CADCFC" stroke-width="1.5"/>
+      <line x1="6.5" y1="0.8" x2="9.5" y2="0.8" stroke="#CADCFC" stroke-width="1.5"/>
+    </g>
+    <g id="hsf-human">
+      <circle cx="0" cy="0" r="13" fill="#0A1628" stroke="#F4A261" stroke-width="1.5"/>
+      <circle cx="0" cy="-3.5" r="3.5" fill="#F4A261"/>
+      <path d="M -6.5 7 Q 0 0.5 6.5 7" fill="#F4A261"/>
+    </g>
+    <g id="hsf-bco">
+      <circle cx="0" cy="0" r="13" fill="#0A1628" stroke="#CADCFC" stroke-width="1.5"/>
+      <path d="M -7 -1 L 0 -7 L 7 -1 L 7 7 L -7 7 Z" fill="none" stroke="#CADCFC" stroke-width="1.5" stroke-linejoin="round"/>
+      <rect x="-1.8" y="2" width="3.6" height="5" fill="#CADCFC"/>
+    </g>
+    <g id="hsf-trigger">
+      <circle cx="0" cy="0" r="16" fill="#0A1628" stroke="#CADCFC" stroke-width="1.5"/>
+      <polygon points="3,-9 -6,1 -1,1 -3,9 6,-1 1,-1" fill="#F4A261"/>
+    </g>
+    <g id="hsf-clock">
+      <circle cx="0" cy="0" r="9" fill="#0A1628" stroke="#CADCFC" stroke-width="1.5"/>
+      <line x1="0" y1="0" x2="0" y2="-5" stroke="#CADCFC" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="0" y1="0" x2="3.5" y2="2" stroke="#CADCFC" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <g id="hsf-pin">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#CADCFC" opacity="0.4"/>
+      <circle cx="0" cy="16" r="5" fill="#0A1628" stroke="#CADCFC" stroke-width="1.5" opacity="0.7"/>
+    </g>
+  </defs>
+
+  <!-- zones -->
+  <g font-family="'Inter Tight', Inter, 'Segoe UI', sans-serif">
+    <g font-size="12" font-weight="600" letter-spacing="2.5" fill="#CADCFC" fill-opacity="0.5" text-anchor="middle">
+      <text x="245" y="46">AUTOMATE</text>
+      <text x="600" y="46">DELEGATE</text>
+      <text x="955" y="46">ACCELERATE</text>
+    </g>
+    <line x1="140" y1="57" x2="1060" y2="57" stroke="#CADCFC" opacity="0.12"/>
+    <line x1="422" y1="66" x2="422" y2="200" stroke="#CADCFC" stroke-dasharray="2 6" opacity="0.12"/>
+    <line x1="778" y1="66" x2="778" y2="200" stroke="#CADCFC" stroke-dasharray="2 6" opacity="0.12"/>
+  </g>
+
+  <!-- PAVE board -->
+  <g transform="translate(850,64)" font-family="'Inter Tight', Inter, 'Segoe UI', sans-serif">
+    <rect x="0" y="0" width="210" height="110" rx="6" fill="#0D1E38" stroke="#CADCFC" stroke-opacity="0.18"/>
+    <text x="12" y="21" font-size="10" font-weight="600" letter-spacing="1.4" fill="#CADCFC" opacity="0.5">PAVE</text>
+    <g fill="none" stroke="#CADCFC" stroke-width="1" stroke-dasharray="3 4" opacity="0.15">
+      <rect x="14"  y="76" width="54" height="16" rx="3"/>
+      <rect x="78"  y="54" width="54" height="16" rx="3"/>
+      <rect x="78"  y="76" width="54" height="16" rx="3"/>
+      <rect x="142" y="32" width="54" height="16" rx="3"/>
+      <rect x="142" y="54" width="54" height="16" rx="3"/>
+      <rect x="142" y="76" width="54" height="16" rx="3"/>
+    </g>
+    <g fill="#1E3A5F" stroke="#2C4A73" stroke-width="1">
+      <rect x="14" y="32" width="54" height="16" rx="3"/>
+      <rect x="14" y="54" width="54" height="16" rx="3"/>
+      <rect x="78" y="32" width="54" height="16" rx="3"/>
+    </g>
+  </g>
+
+  <!-- cast -->
+  <use href="#hsf-trigger" transform="translate(245,112)"/>
+  <use href="#hsf-bot" transform="translate(520,138)"/>
+  <use href="#hsf-bco" transform="translate(720,78)"/>
+  <text x="720" y="108" text-anchor="middle" font-family="'Inter Tight', Inter, 'Segoe UI', sans-serif" font-size="10" font-weight="600" letter-spacing="1.4" fill="#CADCFC" opacity="0.45">BCO</text>
+
+  <!-- ship -->
+  <g class="hsf-ship"><use href="#hsf-ship-sym" transform="translate(0,356)"/></g>
+
+  <!-- sea and route -->
+  <rect x="0" y="408" width="1200" height="52" fill="#0D1E38"/>
+  <line x1="0" y1="408" x2="1200" y2="408" stroke="#CADCFC" opacity="0.25"/>
+  <g stroke="#CADCFC" stroke-width="1.5" opacity="0.12" stroke-linecap="round">
+    <line x1="90" y1="424" x2="150" y2="424"/>
+    <line x1="330" y1="436" x2="374" y2="436"/>
+    <line x1="620" y1="426" x2="690" y2="426"/>
+    <line x1="900" y1="438" x2="952" y2="438"/>
+    <line x1="1060" y1="422" x2="1110" y2="422"/>
+  </g>
+  <use href="#hsf-pin" transform="translate(245,408)"/>
+  <use href="#hsf-pin" transform="translate(600,408)"/>
+  <use href="#hsf-pin" transform="translate(955,408)"/>
+
+  <!-- beat 1: trigger fires, paperwork spawns -->
+  <circle class="hsf-ring" cx="245" cy="112" r="26" fill="none" stroke="#F4A261" stroke-width="1.5"/>
+  <g class="hsf-spawn"><use href="#hsf-doc" transform="translate(277,84)"/></g>
+
+  <!-- beat 2: doc waits at the agent, agent chases the BCO -->
+  <g class="hsf-in26">
+    <use href="#hsf-doc" transform="translate(462,96)"/>
+    <use href="#hsf-clock" transform="translate(502,92)"/>
+  </g>
+  <g class="hsf-chase">
+    <line x1="538" y1="130" x2="698" y2="90" stroke="#CADCFC" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.6" marker-end="url(#hsf-arr)"/>
+    <use href="#hsf-ghost" transform="translate(600,120)"/>
+  </g>
+  <g class="hsf-return">
+    <line x1="702" y1="94" x2="548" y2="128" stroke="#CADCFC" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.6" marker-end="url(#hsf-arr)"/>
+    <use href="#hsf-doc" transform="translate(618,102) scale(0.8)"/>
+  </g>
+  <g class="hsf-in48"><use href="#hsf-check" transform="translate(500,92)"/></g>
+  <g class="hsf-in52"><use href="#hsf-pack" transform="translate(576,158)"/></g>
+
+  <!-- beat 3: the pack docks on the board, human reviews -->
+  <g class="hsf-in60">
+    <use href="#hsf-pack" transform="translate(990,92)"/>
+    <rect x="984" y="86" width="66" height="62" rx="4" fill="none" stroke="#F4A261" stroke-width="2"/>
+  </g>
+  <g class="hsf-in64"><use href="#hsf-human" transform="translate(1092,120)"/></g>
+</svg>
