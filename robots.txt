@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /assets/doc1.html
+Disallow: /assets/doc2.html
+
+Sitemap: https://viago.com.au/sitemap.xml
