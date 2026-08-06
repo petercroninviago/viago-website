@@ -55,13 +55,9 @@ img,svg{display:block;max-width:100%}
   border-bottom:1px solid var(--rule);
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
-.logo{
-  font-family:var(--font-ui);font-weight:700;font-size:21px;letter-spacing:-0.02em;
-  color:var(--ink);display:flex;align-items:baseline;gap:1px;
-}
-.logo .vi{color:var(--ink)}
-.logo .a{color:var(--orange)}
-.logo .go{color:var(--ink)}
+.logo{display:flex;align-items:center}
+.logo img{height:28px;width:auto;display:block}
+@media (max-width:520px){.logo img{height:24px}}
 .nav-links{display:flex;align-items:center;gap:38px;font-family:var(--font-ui)}
 .nav-links a:not(.btn){
   color:var(--navy);font-size:14.5px;font-weight:500;letter-spacing:0.01em;
@@ -333,8 +329,7 @@ h2 + .how-sub,.how-sub{font-size:clamp(15px,1.4vw,17.5px);color:var(--muted);mar
 
 /* ============ FOOTER ============ */
 .footer{background:var(--ink);border-top:1px solid var(--rule-dark);color:var(--ice)}
-.footer .logo .vi,.footer .logo .go{color:var(--white)}
-.footer .logo .a{color:var(--soft-orange)}
+.footer .logo img{height:32px}
 .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;
   padding-top:clamp(48px,7vh,72px);padding-bottom:clamp(36px,5vh,54px)}
 .footer-brand .logo{margin-bottom:16px}
