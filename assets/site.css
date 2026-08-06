@@ -538,6 +538,19 @@ a.chip:hover{border-color:var(--orange);color:var(--orange)}
   text-transform:uppercase;color:var(--navy);background:var(--white);border:1px solid var(--rule);border-radius:100px;padding:6px 14px}
 
 /* ---- contact ---- */
+/* ---- booking embed ----
+   Bookings does not report its content height to the parent, so the frame
+   height is fixed here rather than left to the iframe's own height attribute. */
+.booking-frame{background:var(--white);border:1px solid var(--rule);border-radius:18px;
+  overflow:hidden;box-shadow:0 30px 60px -44px rgba(10,22,40,0.35);
+  height:clamp(820px,90vh,1120px)}
+.booking-frame iframe{width:100%;height:100%;border:0;display:block}
+.booking-fallback{margin-top:20px;text-align:center;font-family:var(--font-ui);
+  font-size:13.5px;color:var(--muted)}
+.booking-fallback a{color:var(--orange);font-weight:500}
+.booking-fallback a:hover{text-decoration:underline}
+@media (max-width:600px){.booking-frame{height:min(1180px,150vh);border-radius:14px}}
+
 /* ---- contact: two doors ---- */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.5vw,28px);align-items:stretch}
 .door{background:var(--white);border:1px solid var(--rule);border-radius:18px;
