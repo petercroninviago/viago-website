@@ -538,37 +538,18 @@ a.chip:hover{border-color:var(--orange);color:var(--orange)}
   text-transform:uppercase;color:var(--navy);background:var(--white);border:1px solid var(--rule);border-radius:100px;padding:6px 14px}
 
 /* ---- contact ---- */
-/* ---- booking embed ----
-   Bookings does not report its content height to the parent, so the frame
-   height is fixed here rather than left to the iframe's own height attribute. */
-.booking-frame{background:var(--white);border:1px solid var(--rule);border-radius:18px;
-  overflow:hidden;box-shadow:0 30px 60px -44px rgba(10,22,40,0.35);
-  height:clamp(820px,90vh,1120px)}
-.booking-frame iframe{width:100%;height:100%;border:0;display:block}
-.booking-fallback{margin-top:20px;text-align:center;font-family:var(--font-ui);
-  font-size:13.5px;color:var(--muted)}
-.booking-fallback a{color:var(--orange);font-weight:500}
-.booking-fallback a:hover{text-decoration:underline}
-@media (max-width:600px){.booking-frame{height:min(1180px,150vh);border-radius:14px}}
-
 /* ---- contact: two doors ---- */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.5vw,28px);align-items:stretch}
 .door{background:var(--white);border:1px solid var(--rule);border-radius:18px;
   padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;
   box-shadow:0 30px 60px -44px rgba(10,22,40,0.35)}
 .door h2{font-family:var(--font-display);font-weight:500;font-size:clamp(24px,2.6vw,31px);
-  letter-spacing:-0.015em;color:var(--ink);margin-top:14px}
-.door p{font-size:15px;line-height:1.68;color:var(--navy);opacity:0.9;margin-top:13px}
-.door .door-lead{font-family:var(--font-read);font-size:clamp(16px,1.4vw,17.5px);line-height:1.62;opacity:1;margin-top:15px}
-.door .expect{margin-top:18px}
-.door-foot{margin-top:auto;padding-top:30px;display:flex;flex-direction:column;align-items:flex-start}
-.door .door-note{font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.04em;
-  color:var(--muted);opacity:0.9;margin-top:14px}
+  letter-spacing:-0.015em;color:var(--ink)}
+.door p{font-size:15.5px;line-height:1.68;color:var(--navy);opacity:0.9;margin-top:14px;max-width:44ch}
+.door-foot{margin-top:auto;padding-top:26px;display:flex;align-items:flex-start}
 @media (max-width:860px){
   .doors{grid-template-columns:1fr}
-  .door-foot{align-items:stretch}
   .door-foot .btn{width:100%;justify-content:center}
-  .door .door-note{text-align:center}
 }
 
 .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(36px,6vw,80px);align-items:start}
